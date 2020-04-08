@@ -1,0 +1,108 @@
+
+/*--------------------- FONT --------------------------------*/
+$fontMain: 'Proxima Nova', sans-serif;
+
+$baseFontSize: 1.125rem;
+$baseLineHeight: 1.833333;
+
+$baseLineH1: 1.06;
+$baseLineH2: 1.09;
+$baseLineH3: 1.25;
+$baseLineH4: 1.33;
+
+$baseLineSmall: 1.5;
+
+
+
+$baseWeight: 400;
+$mediumWeight: 500;
+
+/* circle animate */
+$spin-time: 5.5s;
+$circle-size: 55vmin;
+$circle-stroke: 2.5vmin;
+$displacement: 0%;
+
+/*COLOR LOADING*/
+
+
+
+$colorBlack: #333333;
+$colorGrayLight: #e3e3e3;
+$colorGrayDark: #aeb0ab;
+$colorBrown: #a37f5c;
+$colorHacky: #748947;
+$colorDarkHacky: #50642c;
+$colorHackyLight: #9faf6f;
+$colorBgLight: #FBFBFB;
+
+
+
+$colorLight: #ebebeb;
+$colorGrayLight: #e3e3e3;
+$colorGray: #828282;
+
+
+$colorYeallow: #ffc000;
+$colorOrange: #ffa000;
+$colorRed: #eb0400;
+$colorRedDark: #cf0400;
+$colorGreen: #369e12;
+$colorBlue: #2784f7;
+
+
+
+$colorFacebook: #3b5998;
+$colorTwit: #00aced;
+$colorVk: #45668e;
+$colorTelega: #0088cc;
+
+
+
+$colorWhite: #ffffff;
+$colorLight: #dddddd;
+
+$colorCream: #fffaef;
+$colorBgBlock: #f8f8f8;
+$colorFooter: #8e8e8e;
+$colorWhiteGray: #d0d0d0;
+$colorFacebook: #3b5998;
+$colorTwit: #00aced;
+$colorVk: #45668e;
+$colorTelega: #0088cc;
+
+/*TRANSITION*/
+$mainTransition: all 0.25s;
+$transitionFilter: all 0.5s ease-in-out;
+$transitionProjects: all 0.45s ease;
+
+/*SHADOW*/
+$shadowViewsBlock: rgba(14,14,14,.3);
+$shadowNewsBlock: 0 6px 24px 0 rgba(171, 172, 174, 0.5);
+$shadowNewsBlock7: 0 6px 24px 0 rgba(171, 172, 174, 0.9);
+$shadowMenu: 0px 0px 17.2px 5px rgba(15, 15, 16, 0.51);
+$shadowProjects: 6px 9px 23px 0px rgba(15,15,16,.57);
+$shadowButMain:  0px 6px 24px 0px rgba(117, 117, 117, 0.8);
+$shadowBtnIcon: 0px 6px 24px 0px rgba(117, 117, 117, 0.8);
+$shadowButMainOnOverlay: 0px 6px 24px 0px rgba(15, 15, 16, 0.55);
+
+
+//$shadowButBlue: 0 0 0 3px $colorMainBlue;
+//$shadowButBlueDark: 0 0 0 3px $colorMainBlueDark;
+$shadowButRed: 0 0 0 3px $colorRed;
+//$shadowButRedDark: 0 0 0 3px $colorRedDark;
+$shadowButOrange: 0 0 0 3px $colorOrange;
+//$shadowButOrangeDark: 0 0 0 3px $colorOrangeDark;
+
+
+
+
+
+
+
+
+
+
+
+
+

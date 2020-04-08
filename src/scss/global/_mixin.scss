@@ -1,0 +1,163 @@
+@mixin plenkaBGblack() {
+  &:before {
+    content: '';
+    position: absolute;
+    background:  $colorBlack;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    border-radius: 2px;
+    left: 0;
+  }
+}
+@mixin plenlaBgBrown(){
+  &:before {
+  content: '';
+  position: absolute;
+  background: rgba(43, 38, 33, 0.82);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  border-radius: 2px;
+  left: 0;
+}
+}
+@mixin plenkaBGblue() {
+  &:before {
+    content: '';
+    position: absolute;
+    background: rgba(0, 86, 185, 0.8);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    border-radius: 2px;
+    left: 0;
+  }
+}
+@mixin plenkaBGblue5() {
+  &:before {
+    content: '';
+    position: absolute;
+    background: rgba(0, 86, 185, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 2px;
+  }
+}
+@mixin plenkaBGred() {
+  &:before {
+    content: '';
+    position: absolute;
+    background: rgba(206, 20, 68, 0.5);
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    top: 0;
+    left: 0;
+  }
+}
+@mixin plenkaBGred8() {
+  &:before {
+    content: '';
+    position: absolute;
+    background: rgba(228, 0, 59, 0.8);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 2px;
+  }
+}
+@mixin plenkaBGyellow() {
+  &:before {
+    content: '';
+    border-radius: 2px;
+    position: absolute;
+    background: rgba(236, 156, 34, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+@mixin plenkaBGwhite() {
+  &:before {
+    content: '';
+    border-radius: 2px;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+@mixin plenkaBGblackProject() {
+  &:before {
+    content: '';
+    border-radius: 2px;
+    position: absolute;
+    background: rgba(24, 24, 21, 0.57);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: $mainTransition;
+  }
+}
+@mixin absoluteCenter(){
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+@mixin gradient(){
+  background: -moz-linear-gradient(top, rgba(30,87,153,0) 0%, rgba(0,0,0,0.43) 100%);
+  background: -webkit-linear-gradient(top, rgba(30,87,153,0) 0%,rgba(0,0,0,0.43) 100%);
+  background: linear-gradient(to bottom, rgba(30,87,153,0) 0%,rgba(0,0,0,0.43) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5799', endColorstr='#6e000000',GradientType=0 );
+}
+
+@mixin font18Regular() {
+  font-size: 18px;
+  font-weight: $baseWeight;
+  line-height: $baseLineHeight;
+}
+@mixin font18Medium() {
+  font-size: 18px;
+  font-weight: $mediumWeight;
+  line-height: $baseLineHeight;
+}
+@mixin font36Medium() {
+  font-size: 36px;
+  font-weight: $mediumWeight;
+  line-height: 42px;
+}
+@mixin font36Medium() {
+  font-size: 36px;
+  font-weight: $mediumWeight;
+  line-height: 42px;
+}
+@mixin font48Regular() {
+  font-size: 48px;
+  font-weight: $baseWeight;
+  line-height: $baseLineH2;
+}
+@mixin font48Medium() {
+  font-size: 48px;
+  font-weight: $mediumWeight;
+  line-height: $baseLineH2;
+}
+@mixin font96Regular() {
+  font-size: 96px;
+  font-weight: $baseWeight;
+  line-height: $baseLineH1;
+}
+@mixin font96Medium() {
+  font-size: 96px;
+  font-weight: $mediumWeight;
+  line-height: $baseLineH1;
+}
