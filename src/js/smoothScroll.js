@@ -296,7 +296,7 @@ var Navigation = /** @class */ (function () {
     Navigation.prototype.bindEvents = function () {
         var _this = this;
         this.bullets.forEach(function (bullet, idx) {
-            bullet.addEventListener('wheel', function () {
+            bullet.addEventListener('click', function () {
                 _this.settings.onClick(idx);
             });
         });
@@ -331,6 +331,22 @@ var Slider = /** @class */ (function () {
             this.slides.push(new Slide(slide));
         }
         this.slides[this.settings.currentSlide].setCurrent();
+        this.bindEvents();
+    };
+    Slider.prototype.bindEvents = function () {
+        var _this = this;
+        var lastSlide = this.slides.length;
+        this.slides.forEach(function (slide, idx) {
+            slide.DOM.el.addEventListener('wheel', function (e) {
+                var direction = event.deltaY < 0 ? 'up' : 'down';
+                if (direction == 'up') {
+                    var next = (idx - 1) >= 0 ? idx - 1 : lastSlide - 1;
+                } else if (direction == 'down') {
+                    var next = (idx + 1) < lastSlide ? idx + 1 : 0;
+                }
+                _this.navigate(next);
+            });
+        });
     };
     Slider.prototype.navigate = function (idx) {
         return __awaiter(this, void 0, void 0, function () {
