@@ -1,4 +1,9 @@
 "use strict";
+
+let counterAll = document.querySelector('#slider .counter .all-count'); 
+let counterVisible = document.querySelector('#slider .counter .visible'); 
+let counterHidden = document.querySelector('#slider .counter .hidden'); 
+
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -330,6 +335,9 @@ var Slider = /** @class */ (function () {
             var slide = _a[_i];
             this.slides.push(new Slide(slide));
         }
+ 
+        counterAll.textContent = this.slides.length;
+        counterVisible.textContent = this.settings.currentSlide + 1;
         this.slides[this.settings.currentSlide].setCurrent();
         this.bindEvents();
     };
@@ -344,6 +352,8 @@ var Slider = /** @class */ (function () {
                 } else if (direction == 'down') {
                     var next = (idx + 1) < lastSlide ? idx + 1 : 0;
                 }
+                counterVisible.textContent = next + 1;
+                console.log(next)
                 _this.navigate(next);
             });
         });
