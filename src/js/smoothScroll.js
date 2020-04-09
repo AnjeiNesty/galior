@@ -179,8 +179,8 @@ var Slide = /** @class */ (function () {
         this.DOM.title = el.querySelector('.inner-wrapper');
         this.config = {
             animation: {
-                duration: 1,
-                ease: Expo.easeInOut
+                duration: 1.2,
+                ease: Cubic.easeInOut
             },
             tiltOptions: {
                 translate: {
@@ -224,22 +224,28 @@ var Slide = /** @class */ (function () {
                 TweenMax.to(_this.DOM.title, _this.config.animation.duration, {
                     ease: _this.config.animation.ease,
                     startAt: {
-                        filter: "blur(30px)",
-                        opacity: 0.2
+                        // filter: "blur(30px)",
+                        opacity: 0,
+                        x: 400
                     },
-                    filter: "blur(0px)",
-                    opacity: 1
+                    // filter: "blur(0px)",
+                    opacity: 1,
+                    delay: 0.2,
+                    x:0
+                   
                 });
             }
             if (action === 'hide') {
                 TweenMax.to(_this.DOM.title, _this.config.animation.duration, {
                     ease: _this.config.animation.ease,
                     startAt: {
-                        filter: "blur(0px)",
-                        opacity: 1
+                        // filter: "blur(0px)",
+                        opacity: 1,
+                        x: 0
                     },
-                    filter: "blur(30px)",
-                    opacity: 0.2
+                    // filter: "blur(30px)",
+                    opacity: 0,
+                    x: 400
                 });
             }
             TweenMax.to(_this.DOM.imgWrapper, _this.config.animation.duration, {
