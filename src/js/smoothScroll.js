@@ -273,42 +273,43 @@ var Slide = /** @class */ (function () {
     };
     return Slide;
 }());
-var Navigation = /** @class */ (function () {
-    function Navigation(el, settings) {
-        this.DOM = {};
-        this.DOM.el = el;
-        this.bullets = [];
-        this.settings = {
-            active: 0,
-            onClick: function () { return false; }
-        };
-        Object.assign(this.settings, settings);
-        this.init();
-    }
-    Navigation.prototype.init = function () {
-        for (var _i = 0, _a = this.DOM.el.querySelectorAll('.bullet'); _i < _a.length; _i++) {
-            var bullet = _a[_i];
-            this.bullets.push(bullet);
-        }
-        this.bullets[this.settings.active].classList.add('current');
-        this.bindEvents();
-    };
-    Navigation.prototype.bindEvents = function () {
-        var _this = this;
-        this.bullets.forEach(function (bullet, idx) {
-            bullet.addEventListener('click', function () {
-                _this.settings.onClick(idx);
-            });
-        });
-    };
-    Navigation.prototype.setCurrent = function (idx) {
-        this.bullets.forEach(function (bullet) {
-            bullet.classList.remove('current');
-        });
-        this.bullets[idx].classList.add('current');
-    };
-    return Navigation;
-}());
+// With navigation buttons
+// var Navigation = /** @class */ (function () {
+//     function Navigation(el, settings) {
+//         this.DOM = {};
+//         this.DOM.el = el;
+//         this.bullets = [];
+//         this.settings = {
+//             active: 0,
+//             onClick: function () { return false; }
+//         };
+//         Object.assign(this.settings, settings);
+//         this.init();
+//     }
+//     Navigation.prototype.init = function () {
+//         for (var _i = 0, _a = this.DOM.el.querySelectorAll('.bullet'); _i < _a.length; _i++) {
+//             var bullet = _a[_i];
+//             this.bullets.push(bullet);
+//         }
+//         this.bullets[this.settings.active].classList.add('current');
+//         this.bindEvents();
+//     };
+//     Navigation.prototype.bindEvents = function () {
+//         var _this = this;
+//         this.bullets.forEach(function (bullet, idx) {
+//             bullet.addEventListener('click', function () {
+//                 _this.settings.onClick(idx);
+//             });
+//         });
+//     };
+//     Navigation.prototype.setCurrent = function (idx) {
+//         this.bullets.forEach(function (bullet) {
+//             bullet.classList.remove('current');
+//         });
+//         this.bullets[idx].classList.add('current');
+//     };
+//     return Navigation;
+// }());
 var Counter = /** @class */ (function () {
     function Counter(el, total) {
         this.DOM = {};
@@ -401,10 +402,10 @@ var Slider = /** @class */ (function () {
     }
     Slider.prototype.init = function () {
         var _this = this;
-        this.navigation = new Navigation(document.querySelector('#navigation'), {
-            active: this.settings.currentSlide,
-            onClick: function (idx) { return _this.navigate(idx); }
-        });
+        // this.navigation = new Navigation(document.querySelector('#navigation'), {
+            // active: this.settings.currentSlide,
+            // onClick: function (idx) { return _this.navigate(idx); }
+        // });
         for (var _i = 0, _a = this.DOM.el.querySelectorAll('.slide'); _i < _a.length; _i++) {
             var slide = _a[_i];
             this.slides.push(new Slide(slide));
@@ -439,7 +440,7 @@ var Slider = /** @class */ (function () {
                             return [2 /*return*/];
                         this.isAnimating = true;
                         direction = idx > this.settings.currentSlide ? 'right' : 'left';
-                        this.navigation.setCurrent(idx);
+                        // this.navigation.setCurrent(idx);
                         this.counter.setCurrent(idx);
                         return [4 /*yield*/, Promise.all([
                                 this.slides[this.settings.currentSlide].hide(direction),
