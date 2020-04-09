@@ -314,8 +314,15 @@ var Counter = /** @class */ (function () {
         this.DOM = {};
         this.DOM.el = el;
         this.total = total;
-        this.current = 1;
+        this.current = 0;
         this.counters = [];
+        this.config = {
+            animation: {
+                inDuration: 1,
+                outDuration: 0.3,
+                ease: Expo.easeInOut
+            }
+        };
         this.init();
     }
     Counter.prototype.init = function () {
@@ -325,10 +332,10 @@ var Counter = /** @class */ (function () {
         totalCounter.className = 'total-counter';
         totalCounter.innerText = this.total;
 
-        for (var _i = 1; _i <= this.total; _i++) {
+        for (var _i = 0; _i < this.total; _i++) {
             var counter = document.createElement('span');
             counter.className = `count ${_i == this.current ? 'active' : ''}`;
-            counter.innerText = _i;
+            counter.innerText = _i + 1;
             currentCounter.append(counter);
             this.counters.push(counter);
         }
@@ -345,10 +352,39 @@ var Counter = /** @class */ (function () {
         });
     };
     Counter.prototype.setCurrent = function (idx) {
-        this.counters.forEach(function (counter) {
-            counter.classList.remove('active');
-        });
+        Promise.all([
+            this.hide(this.current),
+            this.show(idx),
+        ]);
+        this.counters[this.current].classList.remove('active');
         this.counters[idx].classList.add('active');
+        this.current = idx;
+    };
+    Counter.prototype.show = function (idx) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            TweenMax.to(_this.counters[idx], _this.config.animation.inDuration, {
+                ease: _this.config.animation.ease,
+                startAt: {
+                    y: '130%',
+                    opacity: 0.1
+                },
+                y: '0%',
+                opacity: 1
+            });
+        });
+    };
+    Counter.prototype.hide = function (idx) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            TweenMax.to(_this.counters[idx], _this.config.animation.outDuration, {
+                ease: _this.config.animation.ease,
+                startAt: {
+                    opacity: 1
+                },
+                opacity: 0
+            });
+        });
     };
     return Counter;
 }());
