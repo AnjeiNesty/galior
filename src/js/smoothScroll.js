@@ -309,6 +309,49 @@ var Navigation = /** @class */ (function () {
     };
     return Navigation;
 }());
+var Counter = /** @class */ (function () {
+    function Counter(el, total) {
+        this.DOM = {};
+        this.DOM.el = el;
+        this.total = total;
+        this.current = 1;
+        this.counters = [];
+        this.init();
+    }
+    Counter.prototype.init = function () {
+        var currentCounter = document.createElement("div");
+        currentCounter.className = 'current-counter';
+        var totalCounter = document.createElement("div");
+        totalCounter.className = 'total-counter';
+        totalCounter.innerText = this.total;
+
+        for (var _i = 1; _i <= this.total; _i++) {
+            var counter = document.createElement('span');
+            counter.className = `count ${_i == this.current ? 'active' : ''}`;
+            counter.innerText = _i;
+            currentCounter.append(counter);
+            this.counters.push(counter);
+        }
+        this.DOM.el.append(currentCounter);
+        this.DOM.el.append(totalCounter);
+        // this.bindEvents();
+    };
+    Counter.prototype.bindEvents = function () {
+        var _this = this;
+        this.bullets.forEach(function (bullet, idx) {
+            bullet.addEventListener('click', function () {
+                _this.settings.onClick(idx);
+            });
+        });
+    };
+    Counter.prototype.setCurrent = function (idx) {
+        this.counters.forEach(function (counter) {
+            counter.classList.remove('active');
+        });
+        this.counters[idx].classList.add('active');
+    };
+    return Counter;
+}());
 var Slider = /** @class */ (function () {
     function Slider(el, settings) {
         this.DOM = {};
@@ -330,6 +373,8 @@ var Slider = /** @class */ (function () {
             var slide = _a[_i];
             this.slides.push(new Slide(slide));
         }
+
+        this.counter = new Counter(document.querySelector('#counter'), this.slides.length);
         this.slides[this.settings.currentSlide].setCurrent();
         this.bindEvents();
     };
@@ -359,6 +404,7 @@ var Slider = /** @class */ (function () {
                         this.isAnimating = true;
                         direction = idx > this.settings.currentSlide ? 'right' : 'left';
                         this.navigation.setCurrent(idx);
+                        this.counter.setCurrent(idx);
                         return [4 /*yield*/, Promise.all([
                                 this.slides[this.settings.currentSlide].hide(direction),
                                 this.slides[idx].show(direction)
