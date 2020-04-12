@@ -2,7 +2,6 @@ let windowWidth;
 windowWidth = $(window).width();
 
 $(document).ready(function () {
- 
 
 
 
@@ -13,6 +12,7 @@ $(document).ready(function () {
 
 
 
+    scrollBlock('click-next-block', 'second-block-anchor');
 
 
 
@@ -91,17 +91,27 @@ $(window).on('load', function () {
 
 
 $(window).on('resize', function () {
+
+
+});
+
+
+$(window).on('scroll', function () {
  
-
-});
-
-
-$(window).on('resize scroll', function () {
-
 });
 
 
 
+
+// Плавный скрол по блокам
+function scrollBlock(button, thisContent) {
+    $('.' + button).on('click', function (e) {
+        var heightTop = document.querySelectorAll('.' + thisContent)[0].offsetTop;
+        e.preventDefault();
+        e.stopPropagation();
+        $('body,html,document').animate({ scrollTop: heightTop }, 750);
+    })
+}
 
 
 /*
@@ -168,15 +178,7 @@ function customClick() {
 }
 
 
-// Плавный скрол по блокам
-function scrollBlock(button, thisContent) {
-    $('.' + button).on('click', function (e) {
-        var heightTop = document.querySelectorAll('.' + thisContent)[0].offsetTop;
-        e.preventDefault();
-        e.stopPropagation();
-        $('body,html,document').animate({scrollTop: heightTop}, 750);
-    })
-}
+
 
 //Tabs переключение
 function openTab(id) {

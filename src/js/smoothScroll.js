@@ -466,6 +466,11 @@ var Slider = /** @class */ (function () {
     return Slider;
 }());
 var sliderEl = document.querySelector('#slider');
-var slider = new Slider(sliderEl);
+if (sliderEl) {
+    var slider = new Slider(sliderEl);
+} else {
+    // return false;
+}
+
 // const options = { currentSlide: 3 };
 // const slider = new Slider(sliderEl, options);

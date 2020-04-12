@@ -19,6 +19,17 @@
     }
 }
 
+main{
+	height: 100%;
+}
+
+section{
+	&.min-height{
+		overflow-y: auto;
+		height: 100%;
+	}
+}
+
 .animate-arrow{
     position: relative;
     width: 55px;
