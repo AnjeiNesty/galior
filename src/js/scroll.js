@@ -34,13 +34,29 @@ let ScrollPage = (function () {
 
         var lastSection = this.sections.length;
         this.sections.forEach(function (slide, idx) {
-            slide.addEventListener('scroll', function () {
-                if (_this.sectionsHeight[idx] - _this.windowHeight === this.scrollTop) {
-                    $('body,html,document').animate({ scrollTop: _this.sectionsOffsetTop[idx + 1] }, 750);
-                    console.log('bottom')
-                } else if (this.scrollTop === 0){
-                    $('body,html,document').animate({ scrollTop: _this.sectionsOffsetTop[idx - 1] }, 750);
-                    console.log('top')
+            slide.addEventListener('wheel', function () {
+                let direction = event.deltaY < 0 ? 'up' : 'down';
+                if(_this.sectionsHeight[idx] === _this.windowHeight){
+                    console.log('absolute')
+
+                    if (direction == 'up') {
+                        $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx - 1] }, 750);
+                    } else if (direction == 'down') {
+                        $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx + 1] }, 750);
+                    }
+
+                } else {
+                    console.log('scroll')
+                    if (direction == 'up') {
+                        if(this.scrollTop === 0){
+                            $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx - 1] }, 750);
+                        }
+                        
+                    } else if (direction == 'down') {
+                        if (_this.sectionsHeight[idx] - _this.windowHeight === this.scrollTop) {
+                            $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx + 1] }, 750);
+                        }
+                    }
                 }
             });
         });
@@ -63,22 +79,6 @@ if (wrapperBlock) {
 
 
 
-
-
-
-// let sec = document.querySelector('#lox');
-// let heightSec = sec.scrollHeight
-// let hightWindow = window.innerHeight
-// let heightTop = document.querySelector('#poh').offsetTop;
-// console.log('height section ' + heightSec)
-// console.log('height window ' + hightWindow)
-// sec.addEventListener('scroll', function () {
-//     if(heightSec - hightWindow === this.scrollTop){
-//         $('body,html,document').animate({ scrollTop: heightTop }, 750);
-//     }
-//     console.log(this.scrollTop)
-
-// });
 
 
 
