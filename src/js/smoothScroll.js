@@ -309,7 +309,7 @@ var Slide = /** @class */ (function () {
                         opacity: 1,
                         delay: 0.2,
                         x: 0
-    
+
                     });
                 }
                 if (action === 'hide') {
@@ -352,9 +352,9 @@ var Slide = /** @class */ (function () {
                 });
             });
         }
-     
 
-      
+
+
     };
     return Slide;
 }());
@@ -543,8 +543,10 @@ var Slider = /** @class */ (function () {
 
         if(this.settings.autoplay) {
             // console.log(_this.settings.currentSlide);
-            let nextSl = (_this.settings.currentSlide + 1) < _this.slides.length ? _this.settings.currentSlide + 1 : 0;
-            setInterval( () => {_this.navigate(nextSl)} , 6000)
+            setInterval( () => {
+                let nextSl = (_this.settings.currentSlide + 1) < _this.slides.length ? _this.settings.currentSlide + 1 : 0;
+                _this.navigate(nextSl)
+            } , 6000);
         }
 
 
@@ -601,7 +603,7 @@ var Slider = /** @class */ (function () {
                             return [2 /*return*/];
                         this.isAnimating = true;
                         direction = idx > this.settings.currentSlide ? 'right' : 'left';
-                 
+
                         if (this.settings.buttons) {
                             this.navigation.setCurrent(idx);
                         }
@@ -610,9 +612,9 @@ var Slider = /** @class */ (function () {
                         }
 
 
-                        
-                        
-                     
+
+
+
 
                         if (this.settings.vertical) {
                             direction = 'top';
@@ -622,7 +624,7 @@ var Slider = /** @class */ (function () {
                             this.slides[idx].show(direction)
                         ])];
 
-                      
+
 
 
                     case 1:
