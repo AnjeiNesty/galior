@@ -1,3 +1,11 @@
+:root {
+	--text-color: rgb(255, 255, 255);
+	--blend-color: rgba(46, 61, 102, 0.6);
+	--bullets-color: rgb(255, 255, 255);
+	--transform-amount: 20px;
+	--bullets-count: 5;
+}
+
 .arrow-text{
     &.go-home{
         .icon-glyphter{
@@ -58,7 +66,7 @@ section{
         left: -60px;
         top: 50%;
         transform: translateY(-50%);
-        font-size: 118px;
+        font-size: 106px;
     }
 }
 .with-bg{
@@ -89,6 +97,20 @@ section{
 }
 
 .link-with-arrow{
+	&.without-bg{
+		&.red{
+			.text{
+				color: $colorRed;
+			}
+			.animate-arrow{
+				.icon-glyphter{
+					color: $colorRed;
+				}
+			
+			}
+		}
+		
+	}
 	&:hover{
 		.animate-arrow{
 			.icon-glyphter{
@@ -111,17 +133,21 @@ section{
 		}
 	}
 }
-
+.hamburger{
+	&.absolute{
+		position: absolute;
+		right: 65px;
+		top: 0;
+	}
+	cursor: pointer;
+	.icon-menu{
+		font-size: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
 header{
-    .hamburger{
-        cursor: pointer;
-        .icon-menu{
-            font-size: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    }
     .wrapper-logo{
         height: 69px;
     }
@@ -152,29 +178,207 @@ header{
         display: none;
     }
 }
+.slider-peoples{
+	#navigation {
+		grid: unset;
+		display: block;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		.bullet{
+			width: 40px;
+			display: flex;
+			justify-content: center;
+			position: absolute;
+			background: transparent;
+			border-radius: 0;
+			right: 10px;
+			opacity: 1;
+			height: auto;
+			&.next{
+				top: 70px;
+			}
+			&.prev{
+				bottom: 4px;
+			}
+			.icon-glyphter{
+				font-size: 22px;
+				color: $colorBlack;
+			}
 
+		}
 
+	}
+	height: 100%;
+	position: relative;
+	.item{
+		.img-wrapper{
+			overflow: hidden;
+			.image{
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				background-color: #fff;
+				position: relative;
+				height: 100%;
+				object-fit: cover;
 
+			}
 
-
-
-
-
-
-
-
-
-
-
-
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
-:root {
-	--text-color: rgb(255, 255, 255);
-	--blend-color: rgba(46, 61, 102, 0.6);
-	--bullets-color: rgb(255, 255, 255);
-	--transform-amount: 20px;
-	--bullets-count: 5;
+		}
+		.title-wrapper{
+			height: auto;
+			background: inherit;
+			position: static;
+			top: inherit;
+			.inner-wrapper{
+				color: $colorBlack;
+				background-color: #fff;
+				padding: 0;
+			}
+		}
+		height: 100%;
+		.name{
+			margin-bottom: 0;
+		}
+		.work{
+			margin-bottom: 5px;
+		}
+		display: flex;
+		flex-direction: column;
+	}
 }
+.height{
+	.container, .row, div[class^='col'] {
+		height: 100%;
+	}
+}
+.who_we{
+	margin-top: 60px;
+}
+.animate-icons-group{
+	display: flex;
+	flex-flow: row wrap;
+	margin: 70px -30px -30px;
+	.item{
+		.wrapper{
+			width: 80px;
+			display: flex;
+			align-items: center;
+
+		}
+		display: flex;
+		justify-content: center;
+		padding: 30px;
+		flex: 0 0 25%
+
+	}
+}
+footer{
+	.go-home{
+		margin-right: 5px;
+		margin-top: 74px;
+	}
+	.wrapper-hamburger{
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+	.contacts{
+		.subtext{
+			font-size: 0.875rem;
+			display: block;
+			line-height: 1;
+		}
+		.mail, .scype{
+			.icon-glyphter{
+				margin-right: 10px;
+				font-size: 1.56rem;
+			}
+			display: flex;
+			align-items: center;
+
+		}
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.bg-image{
+		height: 100%;
+		transform: none;
+		transition: 0.5s linear;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.footer-top{
+		min-height: 32vh;
+		.padding{
+			position: relative;
+			padding: 14vh 0 15px;
+		}
+	}
+	.footer-bottom{
+		color: #fff;
+		.copyright{
+			padding-bottom: 30px;
+			display: block;
+			opacity: 0.44;
+			font-weight: 300;
+			font-size: 1rem;
+		}
+		.link{
+			.h1{
+				margin-bottom: 25px;
+			}
+			min-height: 68vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			.top{
+				padding-top: 100px;
+				display: flex;
+				flex-direction: column;
+				height: 55vh;
+				justify-content: center;
+			}
+		}
+		.wrapper-link{
+			height: 100%;
+			display: block;
+			overflow: hidden;
+			position: relative;
+			&:hover{
+				.bg-image{
+					transform: scale(1.05);
+				}
+				.link-with-arrow .animate-arrow .icon-glyphter{
+					left: 0;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 * {
 	box-sizing: border-box;

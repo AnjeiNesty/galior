@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -170,13 +170,14 @@ var Tilt = /** @class */ (function () {
     return Tilt;
 }());
 var Slide = /** @class */ (function () {
-    function Slide(el) {
+    function Slide(el, settings) {
         this.DOM = {};
         this.DOM.el = el;
         this.DOM.wrap = el.querySelector('.slide-wrapper');
         this.DOM.imgWrapper = el.querySelector('.img-wrapper');
         this.DOM.titleWrap = el.querySelector('.title-wrapper');
         this.DOM.title = el.querySelector('.inner-wrapper');
+        this.settings = settings;
         this.config = {
             animation: {
                 duration: 1.2,
@@ -190,11 +191,18 @@ var Slide = /** @class */ (function () {
                 speed: 800
             }
         };
-        new Tilt(el.querySelector('img'), this.config.tiltOptions);
+
+        if (this.settings.tilt) {
+            new Tilt(el.querySelector('img'), this.config.tiltOptions);
+        }
+
+
     }
     Slide.prototype.setCurrent = function (isCurrent) {
+
         if (isCurrent === void 0) { isCurrent = true; }
         this.DOM.el.classList[isCurrent ? 'add' : 'remove']('current');
+
     };
     Slide.prototype.hide = function (direction) {
         return this.toggle('hide', direction);
@@ -203,119 +211,229 @@ var Slide = /** @class */ (function () {
         this.DOM.el.style.zIndex = 11;
         return this.toggle('show', direction);
     };
+
+
+
+
     Slide.prototype.toggle = function (action, direction) {
-        var _this = this;
-        return new Promise(function (resolve) {
-            if (action === 'show') {
-                TweenMax.to(_this.DOM.wrap, _this.config.animation.duration, {
+
+        if(direction === 'top') {
+            var _this = this;
+            return new Promise(function (resolve) {
+                if (action === 'show') {
+                    // TweenMax.to(_this.DOM.wrap, _this.config.animation.duration, {
+                    //     ease: _this.config.animation.ease,
+                    //     startAt: {
+                    //         y: direction === 'top' ? '100%' : '-100%'
+                    //     },
+                    //     y: '0%'
+                    // });
+                    // TweenMax.to(_this.DOM.titleWrap, _this.config.animation.duration, {
+                    //     ease: _this.config.animation.ease,
+                    //     startAt: {
+                    //         y: direction === 'top' ? '-100%' : '100%'
+                    //     },
+                    //     y: '0%'
+                    // });
+                    TweenMax.to(_this.DOM.title, _this.config.animation.duration, {
+                        ease: _this.config.animation.ease,
+                        startAt: {
+                            y: '40',
+                            opacity: 0.1
+                        },
+                        y: '0',
+                        opacity: 1
+                    });
+                }
+                if (action === 'hide') {
+                    TweenMax.to(_this.DOM.title, _this.config.animation.duration, {
+                        ease: _this.config.animation.ease,
+                        startAt: {
+                            opacity: 1
+                        },
+                        opacity: 0
+                    });
+                }
+                TweenMax.to(_this.DOM.imgWrapper, _this.config.animation.duration, {
                     ease: _this.config.animation.ease,
-                    startAt: {
-                        x: direction === 'right' ? '100%' : '-100%'
+                    startAt: action === 'hide'
+                        ? {}
+                        : {
+                            y: direction === 'top' ? '100%' : '-100%',
+                            // scale: 1.1
+                        },
+                    y: '0%',
+                    // scale: action === 'hide' ? 1.1 : 1,
+                    onStart: function () {
+                        // _this.DOM.imgWrapper.style.transformOrigin =
+                        //     action === 'hide'
+                        //         ? direction === 'right'
+                        //             ? '100% 50%'
+                        //             : '0% 50%'
+                        //         : direction === 'right'
+                        //             ? '0% 50%'
+                        //             : '100% 50%';
+                        _this.DOM.el.style.opacity = 1;
                     },
-                    x: '0%'
+                    onComplete: function () {
+                        _this.DOM.el.style.zIndex = 9;
+                        _this.DOM.el.style.opacity = action === 'hide' ? 0 : 1;
+                        resolve();
+                    }
                 });
-                TweenMax.to(_this.DOM.titleWrap, _this.config.animation.duration, {
-                    ease: _this.config.animation.ease,
-                    startAt: {
-                        x: direction === 'right' ? '-100%' : '100%'
-                    },
-                    x: '0%'
-                });
-                TweenMax.to(_this.DOM.title, _this.config.animation.duration, {
-                    ease: _this.config.animation.ease,
-                    startAt: {
-                        // filter: "blur(30px)",
+            });
+        } else {
+            var _this = this;
+            return new Promise(function (resolve) {
+                if (action === 'show') {
+                    TweenMax.to(_this.DOM.wrap, _this.config.animation.duration, {
+                        ease: _this.config.animation.ease,
+                        startAt: {
+                            x: direction === 'right' ? '100%' : '-100%'
+                        },
+                        x: '0%'
+                    });
+                    TweenMax.to(_this.DOM.titleWrap, _this.config.animation.duration, {
+                        ease: _this.config.animation.ease,
+                        startAt: {
+                            x: direction === 'right' ? '-100%' : '100%'
+                        },
+                        x: '0%'
+                    });
+                    TweenMax.to(_this.DOM.title, _this.config.animation.duration, {
+                        ease: _this.config.animation.ease,
+                        startAt: {
+                            opacity: 0,
+                            x: 400
+                        },
+                        opacity: 1,
+                        delay: 0.2,
+                        x: 0
+    
+                    });
+                }
+                if (action === 'hide') {
+                    TweenMax.to(_this.DOM.title, _this.config.animation.duration, {
+                        ease: _this.config.animation.ease,
+                        startAt: {
+                            opacity: 1,
+                            x: 0
+                        },
                         opacity: 0,
                         x: 400
-                    },
-                    // filter: "blur(0px)",
-                    opacity: 1,
-                    delay: 0.2,
-                    x:0
-                   
-                });
-            }
-            if (action === 'hide') {
-                TweenMax.to(_this.DOM.title, _this.config.animation.duration, {
-                    ease: _this.config.animation.ease,
-                    startAt: {
-                        // filter: "blur(0px)",
-                        opacity: 1,
-                        x: 0
-                    },
-                    // filter: "blur(30px)",
-                    opacity: 0,
-                    x: 400
-                });
-            }
-            TweenMax.to(_this.DOM.imgWrapper, _this.config.animation.duration, {
-                ease: _this.config.animation.ease,
-                startAt: action === 'hide'
-                    ? {}
-                    : {
-                        x: direction === 'right' ? '-100%' : '100%',
-                        scale: 1.1
-                    },
-                x: '0%',
-                scale: action === 'hide' ? 1.1 : 1,
-                onStart: function () {
-                    _this.DOM.imgWrapper.style.transformOrigin =
-                        action === 'hide'
-                            ? direction === 'right'
-                                ? '100% 50%'
-                                : '0% 50%'
-                            : direction === 'right'
-                                ? '0% 50%'
-                                : '100% 50%';
-                    _this.DOM.el.style.opacity = 1;
-                },
-                onComplete: function () {
-                    _this.DOM.el.style.zIndex = 9;
-                    _this.DOM.el.style.opacity = action === 'hide' ? 0 : 1;
-                    resolve();
+                    });
                 }
+                TweenMax.to(_this.DOM.imgWrapper, _this.config.animation.duration, {
+                    ease: _this.config.animation.ease,
+                    startAt: action === 'hide'
+                        ? {}
+                        : {
+                            x: direction === 'right' ? '-100%' : '100%',
+                            scale: 1.1
+                        },
+                    x: '0%',
+                    scale: action === 'hide' ? 1.1 : 1,
+                    onStart: function () {
+                        _this.DOM.imgWrapper.style.transformOrigin =
+                            action === 'hide'
+                                ? direction === 'right'
+                                    ? '100% 50%'
+                                    : '0% 50%'
+                                : direction === 'right'
+                                    ? '0% 50%'
+                                    : '100% 50%';
+                        _this.DOM.el.style.opacity = 1;
+                    },
+                    onComplete: function () {
+                        _this.DOM.el.style.zIndex = 9;
+                        _this.DOM.el.style.opacity = action === 'hide' ? 0 : 1;
+                        resolve();
+                    }
+                });
             });
-        });
+        }
+     
+
+      
     };
     return Slide;
 }());
 // With navigation buttons
-// var Navigation = /** @class */ (function () {
-//     function Navigation(el, settings) {
-//         this.DOM = {};
-//         this.DOM.el = el;
-//         this.bullets = [];
-//         this.settings = {
-//             active: 0,
-//             onClick: function () { return false; }
-//         };
-//         Object.assign(this.settings, settings);
-//         this.init();
-//     }
-//     Navigation.prototype.init = function () {
-//         for (var _i = 0, _a = this.DOM.el.querySelectorAll('.bullet'); _i < _a.length; _i++) {
-//             var bullet = _a[_i];
-//             this.bullets.push(bullet);
-//         }
-//         this.bullets[this.settings.active].classList.add('current');
-//         this.bindEvents();
-//     };
-//     Navigation.prototype.bindEvents = function () {
-//         var _this = this;
-//         this.bullets.forEach(function (bullet, idx) {
-//             bullet.addEventListener('click', function () {
-//                 _this.settings.onClick(idx);
-//             });
-//         });
-//     };
-//     Navigation.prototype.setCurrent = function (idx) {
-//         this.bullets.forEach(function (bullet) {
-//             bullet.classList.remove('current');
-//         });
-//         this.bullets[idx].classList.add('current');
-//     };
-//     return Navigation;
-// }());
+var Navigation = /** @class */ (function () {
+    function Navigation(el, settings) {
+        this.DOM = {};
+        this.DOM.el = el;
+        this.bullets = [];
+        this.settings = {
+            active: 0,
+            onClick: function () { return false; }
+        };
+        Object.assign(this.settings, settings);
+        this.init();
+    }
+    Navigation.prototype.init = function () {
+        for (var _i = 0, _a = this.DOM.el.querySelectorAll('.bullet'); _i < _a.length; _i++) {
+            var bullet = _a[_i];
+            this.bullets.push(bullet);
+        }
+        this.bullets[this.settings.active].classList.add('current');
+        this.bindEvents();
+    };
+    Navigation.prototype.bindEvents = function () {
+        var _this = this;
+        this.bullets.forEach(function (bullet, idx) {
+            bullet.addEventListener('click', function () {
+                _this.settings.onClick(idx);
+            });
+        });
+    };
+    Navigation.prototype.setCurrent = function (idx) {
+        this.bullets.forEach(function (bullet) {
+            bullet.classList.remove('current');
+        });
+        this.bullets[idx].classList.add('current');
+    };
+    return Navigation;
+}());
+
+// With arrows
+var Arrows = /** @class */ (function () {
+    function Arrows(el, settings, slides) {
+        this.DOM = {};
+        this.DOM.el = el;
+        this.bullets = [];
+        this.slidestotal = slides;
+        this.settings = {
+            active: 0,
+            onClick: function () { return false; }
+        };
+        Object.assign(this.settings, settings);
+        this.init();
+
+
+    }
+    Arrows.prototype.init = function () {
+        for (var _i = 0, _a = this.DOM.el.querySelectorAll('.bullet'); _i < _a.length; _i++) {
+            var bullet = _a[_i];
+            this.bullets.push(bullet);
+        }
+        this.bindEvents();
+    };
+    Arrows.prototype.bindEvents = function () {
+        var _this = this;
+        this.bullets.forEach(function (bullet, idx) {
+            bullet.addEventListener('click', function () {
+                if (idx === 0) {
+                    _this.settings.prev();
+                } else {
+                    _this.settings.next();
+                }
+            });
+        });
+    };
+    return Arrows;
+}());
+
 var Counter = /** @class */ (function () {
     function Counter(el, total) {
         this.DOM = {};
@@ -408,19 +526,54 @@ var Slider = /** @class */ (function () {
     }
     Slider.prototype.init = function () {
         var _this = this;
-        // this.navigation = new Navigation(document.querySelector('#navigation'), {
-            // active: this.settings.currentSlide,
-            // onClick: function (idx) { return _this.navigate(idx); }
-        // });
-        for (var _i = 0, _a = this.DOM.el.querySelectorAll('.slide'); _i < _a.length; _i++) {
-            var slide = _a[_i];
-            this.slides.push(new Slide(slide));
+
+        if (this.settings.buttons) {
+            this.navigation = new Navigation(document.querySelector('#navigation'), {
+                active: this.settings.currentSlide,
+                onClick: function (idx) { return _this.navigate(idx); }
+            });
         }
 
-        this.counter = new Counter(document.querySelector('#counter'), this.slides.length);
+
+        for (var _i = 0, _a = this.DOM.el.querySelectorAll('.slide'); _i < _a.length; _i++) {
+            var slide = _a[_i];
+            this.slides.push(new Slide(slide, this.settings));
+        }
+
+
+        if(this.settings.autoplay) {
+            // console.log(_this.settings.currentSlide);
+            let nextSl = (_this.settings.currentSlide + 1) < _this.slides.length ? _this.settings.currentSlide + 1 : 0;
+            setInterval( () => {_this.navigate(nextSl)} , 6000)
+        }
+
+
+
+        if (this.settings.arrows) {
+            this.arrows = new Arrows(document.querySelector('#navigation'), {
+                next: function () {
+                    let nextSlide = (_this.settings.currentSlide + 1) < _this.slides.length ? _this.settings.currentSlide + 1 : 0;
+                    return _this.navigate(nextSlide);
+                },
+                prev: function () {
+                    let prevSlide = (_this.settings.currentSlide - 1) >= 0 ? _this.settings.currentSlide - 1 : _this.slides.length - 1;
+                    return _this.navigate(prevSlide);
+                }
+            }, this.slides.length);
+        }
+
+
+        if (this.settings.counter) {
+            this.counter = new Counter(document.querySelector('#counter'), this.slides.length);
+        }
         this.slides[this.settings.currentSlide].setCurrent();
-        this.bindEvents();
+
+        if (this.settings.wheel) {
+            this.bindEvents();
+        }
     };
+
+
     Slider.prototype.bindEvents = function () {
         var _this = this;
         var lastSlide = this.slides.length;
@@ -432,6 +585,7 @@ var Slider = /** @class */ (function () {
                 } else if (direction == 'down') {
                     var next = (idx + 1) < lastSlide ? idx + 1 : 0;
                 }
+                console.log(next)
                 _this.navigate(next);
             });
         });
@@ -440,18 +594,37 @@ var Slider = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             var direction;
             return __generator(this, function (_a) {
+                // console.log(_a.label)
                 switch (_a.label) {
                     case 0:
                         if (this.isAnimating || idx === this.settings.currentSlide)
                             return [2 /*return*/];
                         this.isAnimating = true;
                         direction = idx > this.settings.currentSlide ? 'right' : 'left';
-                        // this.navigation.setCurrent(idx);
-                        this.counter.setCurrent(idx);
+                 
+                        if (this.settings.buttons) {
+                            this.navigation.setCurrent(idx);
+                        }
+                        if (this.settings.counter) {
+                            this.counter.setCurrent(idx);
+                        }
+
+
+                        
+                        
+                     
+
+                        if (this.settings.vertical) {
+                            direction = 'top';
+                        }
                         return [4 /*yield*/, Promise.all([
-                                this.slides[this.settings.currentSlide].hide(direction),
-                                this.slides[idx].show(direction)
-                            ])];
+                            this.slides[this.settings.currentSlide].hide(direction),
+                            this.slides[idx].show(direction)
+                        ])];
+
+                      
+
+
                     case 1:
                         _a.sent();
                         this.slides[this.settings.currentSlide].setCurrent(false);
@@ -465,9 +638,35 @@ var Slider = /** @class */ (function () {
     };
     return Slider;
 }());
-var sliderEl = document.querySelector('#slider');
+const sliderEl = document.querySelector('#slider');
+let settings = {
+    autoplay: false,
+    tilt: true,
+    counter: true,
+    wheel: true,
+    buttons: false,
+    arrows: false,
+    horizontal: true
+}
 if (sliderEl) {
-    var slider = new Slider(sliderEl);
+    let slider = new Slider(sliderEl, settings);
+} else {
+    // return false;
+}
+
+
+const sliderPeople = document.querySelector('#sliderPeoples');
+settings = {
+    autoplay: true,
+    tilt: false,
+    wheel: false,
+    counter: false,
+    buttons: false,
+    arrows: true,
+    vertical: true
+};
+if (sliderPeople) {
+    let slider = new Slider(sliderPeople, settings);
 } else {
     // return false;
 }
