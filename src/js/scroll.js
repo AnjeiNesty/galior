@@ -9,6 +9,7 @@ let ScrollPage = (function () {
         this.sectionsHeight = [];
         this.sectionsOffsetTop = [];
         this.windowHeight = '';
+        this.point = 1;
         this.init();
     };
     ScrollPage.prototype.init = function () {
@@ -21,9 +22,12 @@ let ScrollPage = (function () {
         for (let _i = 0, _a = this.DOM.el.querySelectorAll('.section'); _i < _a.length; _i++) {
             let heightSec = _a[_i].scrollHeight;
             let heightTop = _a[_i].offsetTop;
+
+            console.log(heightSec)
             this.sections.push(_a[_i]);
             this.sectionsHeight.push(heightSec);
             this.sectionsOffsetTop.push(heightTop);
+
 
         }
         this.scrollNext();
@@ -35,26 +39,51 @@ let ScrollPage = (function () {
         var lastSection = this.sections.length;
         this.sections.forEach(function (slide, idx) {
             slide.addEventListener('wheel', function () {
+                // console.log(slide.offsetTop)
+                // console.log(_this.sectionsHeight)
                 let direction = event.deltaY < 0 ? 'up' : 'down';
-                if(_this.sectionsHeight[idx] === _this.windowHeight){
-                    console.log('absolute')
-
-                    if (direction == 'up') {
-                        $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx - 1] }, 750);
-                    } else if (direction == 'down') {
-                        $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx + 1] }, 750);
-                    }
-
-                } else {
-                    console.log('scroll')
-                    if (direction == 'up') {
-                        if(this.scrollTop === 0){
-                            $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx - 1] }, 750);
+                if (_this.sectionsHeight[idx] === _this.windowHeight) {
+                    if (direction == 'up' && _this.point === 1) {
+                        if (idx === 0 && !(slide.offsetTop === 0) && _this.point === 1){
+                            _this.point = 0;
+                            $('html').animate({ scrollTop: 0 }, 650, () => {
+                                _this.point = 1;
+                            });
+                        } else {
+                            _this.point = 0;
+                            $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx - 1] }, 650, () => {
+                                _this.point = 1;
+                            });
                         }
                         
+                    } else if (direction == 'down' && _this.point === 1) {
+                        _this.point = 0;
+                        $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx + 1] }, 650, () => {
+                            _this.point = 1;
+                        });
+                    }
+                } else {
+                    if (direction == 'up') {
+                        if (this.scrollTop === 0 && _this.point === 1) {
+                            if (idx === 0 && !(slide.offsetTop === 0) && _this.point === 1){
+                                console.log('dada')
+                                _this.point = 0;
+                                $('html').animate({ scrollTop: 0 }, 650, () => {
+                                    _this.point = 1;
+                                });
+                            } else {
+                                _this.point = 0;
+                                $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx - 1] },650, () => {
+                                    _this.point = 1;
+                                });
+                            }
+                        }
                     } else if (direction == 'down') {
-                        if (_this.sectionsHeight[idx] - _this.windowHeight === this.scrollTop) {
-                            $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx + 1] }, 750);
+                        if (_this.sectionsHeight[idx] - _this.windowHeight === this.scrollTop && _this.point === 1) {
+                            _this.point = 0;
+                            $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx + 1] },650, () => {
+                                _this.point = 1;
+                            });
                         }
                     }
                 }
@@ -68,12 +97,28 @@ let ScrollPage = (function () {
 }());
 
 
-const wrapperBlock = document.querySelector('#fullBlock');
-if (wrapperBlock) {
-    let scrollPage = new ScrollPage(wrapperBlock);
+if (document.querySelector('.slick')) {
+    $('.slick').on('init', function (event, slick, direction) {
+        const wrapperBlock = document.querySelector('#fullBlock');
+        if (wrapperBlock) {
+            let scrollPage = new ScrollPage(wrapperBlock);
+        } else {
+
+        }
+    });
+
 } else {
-    
+    const wrapperBlock = document.querySelector('#fullBlock');
+    if (wrapperBlock) {
+        let scrollPage = new ScrollPage(wrapperBlock);
+    } else {
+
+    }
 }
+
+
+
+
 
 
 
