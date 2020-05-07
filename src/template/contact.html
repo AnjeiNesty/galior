@@ -3,6 +3,72 @@
 <body class="contact">
 
     <div class="main-menu">
+        <div class="start-project-popup">
+            <div class="close-popup">
+                <i class="icon-glyphter icon-close"></i>
+            </div>
+            <div class="bg-image-cover bg-image" data-src="1"
+                style="background-image: url('images/menu/who_we.min.jpg');">
+            </div>
+            <div class="wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-offset-3 col-lg-6">
+                            <div class="wrapper-form">
+                                <h2 class="h2">Got project? Let’s talk!</h2>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <input type="text" name="fullName" id="fullName" placeholder="Andrey"
+                                                    class="white">
+                                                <label for="fullName">Your name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <input type="number" name="phone" id="phone" placeholder="375336728485"
+                                                    class="white">
+                                                <label for="phone">Phone number</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <input type="text" name="email" id="email" placeholder="petr@gmail.com"
+                                                    class="white">
+                                                <label for="email">Contact email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <textarea class="auto-expand white" id="per" rows="1" placeholder="I am a little pony live in Lodz..."></textarea>
+                                                <label for="per">Your story</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field js">
+                                                <input type="file" name="file-1[]" id="file-1"
+                                                    class="inputfile inputfile-1 white"
+                                                    data-multiple-caption="{count} files selected" multiple="">
+                                                <label for="file-1">
+                                                    <i class="icon-glyphter icon-attachment"></i>
+                                                    <span>Attach resume (max 2 Mb)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wrapper-btn">
+                                        <button class="btn btn-white btn-outline btn-blur">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="bg-image-cover bg-image" data-src="3"
             style="background-image: url('images/menu/contacts-min.jpg');"></div>
         <div class="bg-image-cover bg-image" data-src="2"
@@ -38,7 +104,7 @@
                                             <li class="hover-club" data-image="3"><a href="#"
                                                     class="link hover hover-3">Contacts</a></li>
                                             <li class="hover-club with-icon" data-image="4">
-                                                <a href="#" class="link hover hover-3">Start Project<i
+                                                <a href="#" class="link hover hover-3 open-form">Start Project<i
                                                         class="icon-glyphter icon-pencil"></i></a>
                                             </li>
                                         </ul>
@@ -76,18 +142,20 @@
                         </div>
                     </div>
                     <div class="bottom">
-                        <div class="presentation item">
-                            <a href="" download="" class="download-presentation text-with-icon">
-                                <i class="icon-glyphter icon-download"></i>
-                                <span>Download_Presentation</span>
-                            </a>
-
-                        </div>
-                        <div class="brief item">
-                            <a href="" download="" class="download-brief text-with-icon">
-                                <i class="icon-glyphter icon-download"></i>
-                                <span>Download_Presentation</span>
-                            </a>
+                        <div class="download-file">
+                            <div class="presentation item">
+                                <a href="" download="" class="download-presentation text-with-icon">
+                                    <i class="icon-glyphter icon-download"></i>
+                                    <span>Download_Presentation</span>
+                                </a>
+    
+                            </div>
+                            <div class="brief item">
+                                <a href="" download="" class="download-brief text-with-icon">
+                                    <i class="icon-glyphter icon-download"></i>
+                                    <span>Download_Presentation</span>
+                                </a>
+                            </div>
                         </div>
                         <div class="soc item">
                             <ul class="ul-default">
@@ -231,7 +299,7 @@
                                         All rights reserved</p>
                                 </div>
                             </div>
-                            <div class="col-lg-offset-1 col-lg-6">
+                            <div class="col-lg-offset-1 col-lg-6 relative">
                                 <div class="map">
                                     <div class="map-google" id="googleMapCompany">
                                         <script>

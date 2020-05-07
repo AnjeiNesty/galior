@@ -3,6 +3,72 @@
 <body class="about">
 
     <div class="main-menu">
+        <div class="start-project-popup">
+            <div class="close-popup">
+                <i class="icon-glyphter icon-close"></i>
+            </div>
+            <div class="bg-image-cover bg-image" data-src="1"
+                style="background-image: url('images/menu/who_we.min.jpg');">
+            </div>
+            <div class="wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-offset-3 col-lg-6">
+                            <div class="wrapper-form">
+                                <h2 class="h2">Got project? Let’s talk!</h2>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <input type="text" name="fullName" id="fullName" placeholder="Andrey"
+                                                    class="white">
+                                                <label for="fullName">Your name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <input type="number" name="phone" id="phone" placeholder="375336728485"
+                                                    class="white">
+                                                <label for="phone">Phone number</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <input type="text" name="email" id="email" placeholder="petr@gmail.com"
+                                                    class="white">
+                                                <label for="email">Contact email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <textarea class="auto-expand white" id="per" rows="1" placeholder="I am a little pony live in Lodz..."></textarea>
+                                                <label for="per">Your story</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field js">
+                                                <input type="file" name="file-1[]" id="file-1"
+                                                    class="inputfile inputfile-1 white"
+                                                    data-multiple-caption="{count} files selected" multiple="">
+                                                <label for="file-1">
+                                                    <i class="icon-glyphter icon-attachment"></i>
+                                                    <span>Attach resume (max 2 Mb)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wrapper-btn">
+                                        <button class="btn btn-white btn-outline btn-blur">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="bg-image-cover bg-image" data-src="3"
             style="background-image: url('images/menu/contacts-min.jpg');"></div>
         <div class="bg-image-cover bg-image" data-src="2"
@@ -38,7 +104,7 @@
                                             <li class="hover-club" data-image="3"><a href="#"
                                                     class="link hover hover-3">Contacts</a></li>
                                             <li class="hover-club with-icon" data-image="4">
-                                                <a href="#" class="link hover hover-3">Start Project<i
+                                                <a href="#" class="link hover hover-3 open-form">Start Project<i
                                                         class="icon-glyphter icon-pencil"></i></a>
                                             </li>
                                         </ul>
@@ -76,18 +142,20 @@
                         </div>
                     </div>
                     <div class="bottom">
-                        <div class="presentation item">
-                            <a href="" download="" class="download-presentation text-with-icon">
-                                <i class="icon-glyphter icon-download"></i>
-                                <span>Download_Presentation</span>
-                            </a>
-
-                        </div>
-                        <div class="brief item">
-                            <a href="" download="" class="download-brief text-with-icon">
-                                <i class="icon-glyphter icon-download"></i>
-                                <span>Download_Presentation</span>
-                            </a>
+                        <div class="download-file">
+                            <div class="presentation item">
+                                <a href="" download="" class="download-presentation text-with-icon">
+                                    <i class="icon-glyphter icon-download"></i>
+                                    <span>Download_Presentation</span>
+                                </a>
+    
+                            </div>
+                            <div class="brief item">
+                                <a href="" download="" class="download-brief text-with-icon">
+                                    <i class="icon-glyphter icon-download"></i>
+                                    <span>Download_Presentation</span>
+                                </a>
+                            </div>
                         </div>
                         <div class="soc item">
                             <ul class="ul-default">
@@ -125,7 +193,24 @@
     </div>
     <main id="fullBlock">
         <section class="section min-height without-fixed first">
-            //= parts/header-menu.html
+            <header>
+                <div class="container">
+                    <div class="header-content">
+                        <div class="wrapper-logo wow fadeInDown d100">
+                            <a href="/" class="link-logo">
+                                <i class="icon-glyphter icon-logo logo"></i>
+                            </a>
+                            <div class="breadcrumbs">
+                                <span>/</span>
+                                <span class="text-uppercase">Who we are</span>
+                            </div>
+                        </div>
+                        <div class="hamburger">
+                           <i class="icon-glyphter icon-menu"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
             <div class="content-first-block">
                 <div class="container">
                     <div class="main-text">
@@ -223,50 +308,44 @@
         </section>
         <section class="section min-height">
             <div class="container relative">
-                <div class="hamburger absolute with-padding">
+                <div class="hamburger absolute">
                     <i class="icon-glyphter icon-menu"></i>
                 </div>
                 <div class="row row-align-stretch">
                     <div class="col-xs-12 col-lg-4 position-sticky-wrapper">
-                        <div class="gallery fixed one-main-photo">
-                            <a href="images/service_page/backend_developer_small-min.jpg" class="photo bg-image-cover"
-                                data-fancybox="sliderImages"
-                                style="background-image: url('images/service_page/backend_developer_small-min.jpg')">
-                                <i class="icon-glyphter icon-zoom-in"></i>
-                            </a>
-                            <a href="images/service_page/corporate_identity_small-min.jpg"
-                                class="photo display-none bg-image-cover" data-fancybox="sliderImages"
-                                style="background-image: url('images/service_page/corporate_identity_small-min.jpg')">
-                                <i class="icon-glyphter icon-zoom-in"></i>
-                            </a>
-                            <a href="images/service_page/corporate_website_small-min.jpg"
-                                class="photo display-none bg-image-cover" data-fancybox="sliderImages"
-                                style="background-image: url('images/service_page/corporate_website_small-min.jpg')">
-                                <i class="icon-glyphter icon-zoom-in"></i>
-                            </a>
-                            <a href="images/service_page/exclusive_design_small-min.jpg"
-                                class="photo display-none bg-image-cover" data-fancybox="sliderImages"
-                                style="background-image: url('images/service_page/exclusive_design_small-min.jpg')">
-                                <i class="icon-glyphter icon-zoom-in"></i>
-                            </a>
-                            <a href="images/service_page/frontend_developer_small-min.jpg"
-                                class="photo display-none bg-image-cover" data-fancybox="sliderImages"
-                                style="background-image: url('images/service_page/frontend_developer_small-min.jpg')">
-                                <i class="icon-glyphter icon-zoom-in"></i>
-                            </a>
-                            <a href="images/service_page/landing_small-min.jpg"
-                                class="photo display-none bg-image-cover" data-fancybox="sliderImages"
-                                style="background-image: url('images/service_page/landing_small-min.jpg')">
-                                <i class="icon-glyphter icon-zoom-in"></i>
-                            </a>
-                            <a href="images/service_page/mobile_web_app_small-min.jpg"
-                                class="photo display-none bg-image-cover" data-fancybox="sliderImages"
-                                style="background-image: url('images/service_page/mobile_web_app_small-min.jpg')">
-                                <i class="icon-glyphter icon-zoom-in"></i>
-                            </a>
-
-
+                        <div class="wrapper-gallery fixed">
+                            <div class="full-screen">
+                                <i class="icon-glyphter icon-full_screen"></i>
+                            </div>
+                            <div class="gallery one-main-photo" id="gallery">
+                                <a href="images/service_page/backend_developer_small-min.jpg" class="photo bg-image-cover"
+                                    data-fancybox="sliderImages"
+                                    style="background-image: url('images/service_page/backend_developer_small-min.jpg')">
+                                </a>
+                             
+                                <a href="images/service_page/corporate_website_small-min.jpg"
+                                    class="photo display-none bg-image-cover" data-fancybox="sliderImages"
+                                    style="background-image: url('images/service_page/corporate_website_small-min.jpg')">
+                                </a>
+                                <a href="images/service_page/exclusive_design_small-min.jpg"
+                                    class="photo display-none bg-image-cover" data-fancybox="sliderImages"
+                                    style="background-image: url('images/service_page/exclusive_design_small-min.jpg')">
+                                </a>
+                                <a href="images/service_page/frontend_developer_small-min.jpg"
+                                    class="photo display-none bg-image-cover" data-fancybox="sliderImages"
+                                    style="background-image: url('images/service_page/frontend_developer_small-min.jpg')">
+                                </a>
+                                <a href="images/service_page/landing_small-min.jpg"
+                                    class="photo display-none bg-image-cover" data-fancybox="sliderImages"
+                                    style="background-image: url('images/service_page/landing_small-min.jpg')">
+                                </a>
+                                <a href="images/service_page/mobile_web_app_small-min.jpg"
+                                    class="photo display-none bg-image-cover" data-fancybox="sliderImages"
+                                    style="background-image: url('images/service_page/mobile_web_app_small-min.jpg')">
+                                </a>
+                            </div>
                         </div>
+                       
 
                     </div>
                     <div class="col-xs-12 col-lg-8 special-padding">
@@ -317,7 +396,7 @@
         </section>
         <section class="section min-height">
             <div class="container relative">
-                <div class="hamburger absolute white with-padding">
+                <div class="hamburger absolute white">
                     <i class="icon-glyphter icon-menu"></i>
                 </div>
                 <div class="row row-align-stretch what-we-can">
@@ -400,6 +479,9 @@
             </div>
         </section>
         <section class="section min-height special-padding relative">
+            <div class="hamburger absolute with-padding">
+                <i class="icon-glyphter icon-menu"></i>
+            </div>
             <div class="popup right">
                 <div class="close">
                     <i class="icon-glyphter icon-close"></i>
@@ -407,7 +489,7 @@
                 <div class="wrapper" data-logo="1">
                     <div class="content">
                         <div class="this-logo">
-                            <img src="images/work/logo.svg" alt="logo" class="image">
+                            <img src="images/work/abm.png" alt="abm" class="image">
                         </div>
                         <div class="caption">
                             <p class="h3">"Party of Growth" ("Partiya Rosta")</p>
@@ -441,7 +523,7 @@
                 <div class="wrapper" data-logo="2">
                     <div class="content">
                         <div class="this-logo">
-                            <img src="images/work/abrau.svg" alt="logo" class="image">
+                            <img src="images/work/agu.png" alt="agu" class="image">
                         </div>
                         <div class="caption">
                             <p class="h3">Abrau</p>
@@ -475,7 +557,7 @@
                 <div class="wrapper" data-logo="3">
                     <div class="content">
                         <div class="this-logo">
-                            <img src="images/work/logo.svg" alt="logo" class="image">
+                            <img src="images/work/aiwona.png" alt="aiwona" class="image">
                         </div>
                         <div class="caption">
                             <p class="h3">Russian Political party "Party of Growth" ("Partiya Rosta")</p>
@@ -515,7 +597,47 @@
                 <div class="wrapper" data-logo="4">
                     <div class="content">
                         <div class="this-logo">
-                            <img src="images/work/logo.svg" alt="logo" class="image">
+                            <img src="images/work/alfamedica.png" alt="alfamedica" class="image">
+                        </div>
+                        <div class="caption">
+                            <p class="h3">Russian Political</p>
+                        </div>
+                        <div class="web">
+                            <a href="" class="text-with-icon">
+                                <i class="icon-glyphter icon-world mr-10"></i>
+                                <span class="txt-bold">rost.ru</span>
+                            </a>
+                        </div>
+                        <div class="text">The all-Russian political party Growth Party is the officially existing
+                            Russian
+                            liberal-conservative political party. Created in February-March 2016 on the basis of the
+                            Just
+                            Cause party by Boris Titov, Commissioner for the Protection of Entrepreneurs' Rights under
+                            the
+                            President of Russia. The all-Russian political party Growth Party is the officially existing
+                            Russian
+                            liberal-conservative political party. Created in February-March 2016 on the basis of the
+                            Just
+                            Cause party by Boris Titov, Commissioner for the Protection of Entrepreneurs' Rights under
+                            the
+                            President of Russia.
+                        </div>
+                        <div class="geo">
+                            <a href="" class="text-with-icon">
+                                <i class="icon-glyphter icon-place mr-10"></i>
+                                <span>Moscow, Russia</span>
+
+                            </a>
+                        </div>
+                        <div class="button">
+                            <a href="#" class="btn btn-outline btn-red">View our works</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper" data-logo="5">
+                    <div class="content">
+                        <div class="this-logo">
+                            <img src="images/work/alt.png" alt="alt" class="image">
                         </div>
                         <div class="caption">
                             <p class="h3">Russian Political</p>
@@ -554,51 +676,57 @@
                 </div>
             </div>
             <div class="container relative">
-                <div class="hamburger absolute">
-                    <i class="icon-glyphter icon-menu"></i>
-                </div>
+               
                 <div class="row">
                     <div class="col-xs-12 col-lg-offset-2 col-lg-8">
                         <div class="we-work-with">
                             <h2 class="h2">We work with</h2>
                             <div class="icon-group">
                                 <div class="item" data-logo="1">
-                                    <img src="images/work/logo.svg" alt="logo" class="image">
+                                    <img src="images/work/abm.png" alt="abm" class="image">
                                 </div>
                                 <div class="item" data-logo="2">
-                                    <img src="images/work/abrau.svg" alt="logo" class="image">
+                                    <img src="images/work/agu.png" alt="agu" class="image">
                                 </div>
                                 <div class="item" data-logo="3">
-                                    <img src="images/work/logo.svg" alt="logo" class="image">
+                                    <img src="images/work/aiwona.png" alt="aiwona" class="image">
                                 </div>
                                 <div class="item" data-logo="4">
-                                    <img src="images/work/logo.svg" alt="logo" class="image">
+                                    <img src="images/work/alfamedica.png" alt="alfamedica" class="image">
                                 </div>
                                 <div class="item" data-logo="5">
-                                    <img src="images/work/logo.svg" alt="logo" class="image">
+                                    <img src="images/work/alt.png" alt="alt" class="image">
                                 </div>
                                 <div class="item" data-logo="6">
-                                    <img src="images/work/logo.svg" alt="logo" class="image">
+                                    <img src="images/work/autotrap2.png" alt="autotrap2" class="image">
                                 </div>
                                 <div class="item" data-logo="7">
-                                    <img src="images/work/logo.svg" alt="logo" class="image">
+                                    <img src="images/work/cl-vp.png" alt="cl-vp" class="image">
                                 </div>
                                 <div class="item" data-logo="8">
-                                    <img src="images/work/logo.svg" alt="logo" class="image">
+                                    <img src="images/work/logo_giz.png" alt="logo_giz" class="image">
                                 </div>
                                 <div class="item" data-logo="9">
-                                    <img src="images/work/logo.svg" alt="logo" class="image">
+                                    <img src="images/work/logo_retina.png" alt="logo_retina" class="image">
                                 </div>
                                 <div class="item" data-logo="10">
-                                    <img src="images/work/logo.svg" alt="logo" class="image">
+                                    <img src="images/work/logo_text.png" alt="logo_text" class="image">
                                 </div>
                                 <div class="item" data-logo="11">
-                                    <img src="images/work/logo.svg" alt="logo" class="image">
+                                    <img src="images/work/logo-transparency-min.png" alt="logo-transparency-min" class="image">
                                 </div>
                                 <div class="item" data-logo="12">
-                                    <img src="images/work/logo.svg" alt="logo" class="image">
+                                    <img src="images/work/logo.png" alt="logo" class="image">
                                 </div>
-
+                                <div class="item" data-logo="12">
+                                    <img src="images/work/lr-logo.png" alt="lr-logo" class="image">
+                                </div>
+                                <div class="item" data-logo="12">
+                                    <img src="images/work/snabdetal_logo.png" alt="snabdetal_logo" class="image">
+                                </div>
+                                <div class="item" data-logo="12">
+                                    <img src="images/work/visitabrau.png" alt="visitabrau" class="image">
+                                </div>
                             </div>
                         </div>
                     </div>

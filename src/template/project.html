@@ -3,6 +3,72 @@
 <body class="project">
 
     <div class="main-menu">
+        <div class="start-project-popup">
+            <div class="close-popup">
+                <i class="icon-glyphter icon-close"></i>
+            </div>
+            <div class="bg-image-cover bg-image" data-src="1"
+                style="background-image: url('images/menu/who_we.min.jpg');">
+            </div>
+            <div class="wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-offset-3 col-lg-6">
+                            <div class="wrapper-form">
+                                <h2 class="h2">Got project? Let’s talk!</h2>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <input type="text" name="fullName" id="fullName" placeholder="Andrey"
+                                                    class="white">
+                                                <label for="fullName">Your name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <input type="number" name="phone" id="phone" placeholder="375336728485"
+                                                    class="white">
+                                                <label for="phone">Phone number</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <input type="text" name="email" id="email" placeholder="petr@gmail.com"
+                                                    class="white">
+                                                <label for="email">Contact email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field">
+                                                <textarea class="auto-expand white" id="per" rows="1" placeholder="I am a little pony live in Lodz..."></textarea>
+                                                <label for="per">Your story</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-lg-6">
+                                            <div class="field js">
+                                                <input type="file" name="file-1[]" id="file-1"
+                                                    class="inputfile inputfile-1 white"
+                                                    data-multiple-caption="{count} files selected" multiple="">
+                                                <label for="file-1">
+                                                    <i class="icon-glyphter icon-attachment"></i>
+                                                    <span>Attach resume (max 2 Mb)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wrapper-btn">
+                                        <button class="btn btn-white btn-outline btn-blur">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="bg-image-cover bg-image" data-src="3"
             style="background-image: url('images/menu/contacts-min.jpg');"></div>
         <div class="bg-image-cover bg-image" data-src="2"
@@ -38,7 +104,7 @@
                                             <li class="hover-club" data-image="3"><a href="#"
                                                     class="link hover hover-3">Contacts</a></li>
                                             <li class="hover-club with-icon" data-image="4">
-                                                <a href="#" class="link hover hover-3">Start Project<i
+                                                <a href="#" class="link hover hover-3 open-form">Start Project<i
                                                         class="icon-glyphter icon-pencil"></i></a>
                                             </li>
                                         </ul>
@@ -76,18 +142,20 @@
                         </div>
                     </div>
                     <div class="bottom">
-                        <div class="presentation item">
-                            <a href="" download="" class="download-presentation text-with-icon">
-                                <i class="icon-glyphter icon-download"></i>
-                                <span>Download_Presentation</span>
-                            </a>
-
-                        </div>
-                        <div class="brief item">
-                            <a href="" download="" class="download-brief text-with-icon">
-                                <i class="icon-glyphter icon-download"></i>
-                                <span>Download_Presentation</span>
-                            </a>
+                        <div class="download-file">
+                            <div class="presentation item">
+                                <a href="" download="" class="download-presentation text-with-icon">
+                                    <i class="icon-glyphter icon-download"></i>
+                                    <span>Download_Presentation</span>
+                                </a>
+    
+                            </div>
+                            <div class="brief item">
+                                <a href="" download="" class="download-brief text-with-icon">
+                                    <i class="icon-glyphter icon-download"></i>
+                                    <span>Download_Presentation</span>
+                                </a>
+                            </div>
                         </div>
                         <div class="soc item">
                             <ul class="ul-default">
@@ -148,16 +216,26 @@
                     <div class="wrapper-tabs">
                         <ul class="ul-default ul">
                             <li class="wrapper-link hover-club active" data-go="all_project">
-                                <a href="javascript:void(0);" class="link hover red hover-3">All Projects</a>
+                                <span class="hover red hover-3">
+                                    <a href="javascript:void(0);" class="link" title="All Projects">All Projects</a>
+                                </span>
                             </li>
                             <li class="wrapper-link hover-club" data-go="website">
-                                <a href="javascript:void(0);" class="link hover red hover-3">Websites</a>
+                                <span class="hover red hover-3">
+                                    <a href="javascript:void(0);" class="link" title="Websites">Websites</a>
+                                </span>
                             </li>
                             <li class="wrapper-link hover-club" data-go="corporate">
-                                <a href="javascript:void(0);" class="link hover red hover-3">Corporate identity</a>
+                                <span class="hover red hover-3">
+                                    <a href="javascript:void(0);" class="link" title="Corporate identity">Corporate
+                                        identity</a>
+                                </span>
                             </li>
                             <li class="wrapper-link hover-club" data-go="programming">
-                                <a href="javascript:void(0);" class="link hover red hover-3">Programming</a>
+                                <span class="hover red hover-3">
+                                    <a href="javascript:void(0);" class="link"
+                                        title="Programming">Programming</a>
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -171,10 +249,10 @@
                                     </div>
                                     <div class="width">
                                         <div class="p-prj-thum">
-                                            <img src="images/project/image1.jpg" alt="project" class="image">
+                                            <img src="images/project/1.jpg" alt="project" class="image">
                                         </div>
                                         <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
+                                            <img src="images/project/1_red.jpg" alt="project" class="image hover">
                                             <div class="description">We worked out and launched the corporate website
                                                 for the Party of Growth (Partiya Rosta). The website is fully adaptive.
                                                 We made the exclusive design, html-coding and realization on 1C Bitrix
@@ -186,7 +264,7 @@
                                             </div>
                                         </div>
                                         <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow1.png" alt="shadow" class="image">
+                                            <img src="images/project/1_shadow.png" alt="shadow" class="image">
                                         </div>
                                     </div>
                                 </a>
@@ -197,10 +275,10 @@
                                     </div>
                                     <div class="width">
                                         <div class="p-prj-thum">
-                                            <img src="images/project/image2.jpg" alt="project" class="image">
+                                            <img src="images/project/2.jpg" alt="project" class="image">
                                         </div>
                                         <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
+                                            <img src="images/project/2_red.jpg" alt="project" class="image hover">
                                             <div class="description">We worked out and launched the corporate website
                                                 for the Party of Growth (Partiya Rosta). The website is fully adaptive.
                                                 We made the exclusive design, html-coding and realization on 1C Bitrix
@@ -212,7 +290,7 @@
                                             </div>
                                         </div>
                                         <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow2.jpg" alt="shadow" class="image">
+                                            <img src="images/project/2_shadow.png" alt="shadow" class="image">
                                         </div>
                                     </div>
                                 </a>
@@ -223,10 +301,10 @@
                                     </div>
                                     <div class="width">
                                         <div class="p-prj-thum">
-                                            <img src="images/project/image1.jpg" alt="project" class="image">
+                                            <img src="images/project/3.jpg" alt="project" class="image">
                                         </div>
                                         <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
+                                            <img src="images/project/3_red.jpg" alt="project" class="image hover">
                                             <div class="description">We worked out and launched the corporate website
                                                 for the Party of Growth (Partiya Rosta). The website is fully adaptive.
                                                 We made the exclusive design, html-coding and realization on 1C Bitrix
@@ -238,7 +316,7 @@
                                             </div>
                                         </div>
                                         <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow1.png" alt="shadow" class="image">
+                                            <img src="images/project/3_shadow.png" alt="shadow" class="image">
                                         </div>
                                     </div>
                                 </a>
@@ -249,10 +327,10 @@
                                     </div>
                                     <div class="width">
                                         <div class="p-prj-thum">
-                                            <img src="images/project/image1.jpg" alt="project" class="image">
+                                            <img src="images/project/4.jpg" alt="project" class="image">
                                         </div>
                                         <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
+                                            <img src="images/project/4_red.jpg" alt="project" class="image hover">
                                             <div class="description">We worked out and launched the corporate website
                                                 for the Party of Growth (Partiya Rosta). The website is fully adaptive.
                                                 We made the exclusive design, html-coding and realization on 1C Bitrix
@@ -264,7 +342,7 @@
                                             </div>
                                         </div>
                                         <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow1.png" alt="shadow" class="image">
+                                            <img src="images/project/4_shadow.png" alt="shadow" class="image">
                                         </div>
                                     </div>
                                 </a>
@@ -275,10 +353,10 @@
                                     </div>
                                     <div class="width">
                                         <div class="p-prj-thum">
-                                            <img src="images/project/image2.jpg" alt="project" class="image">
+                                            <img src="images/project/5.jpg" alt="project" class="image">
                                         </div>
                                         <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
+                                            <img src="images/project/5_red.jpg" alt="project" class="image hover">
                                             <div class="description">We worked out and launched the corporate website
                                                 for the Party of Growth (Partiya Rosta). The website is fully adaptive.
                                                 We made the exclusive design, html-coding and realization on 1C Bitrix
@@ -290,7 +368,7 @@
                                             </div>
                                         </div>
                                         <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow2.jpg" alt="shadow" class="image">
+                                            <img src="images/project/5_shadow.png" alt="shadow" class="image">
                                         </div>
                                     </div>
                                 </a>
@@ -301,10 +379,10 @@
                                     </div>
                                     <div class="width">
                                         <div class="p-prj-thum">
-                                            <img src="images/project/image1.jpg" alt="project" class="image">
+                                            <img src="images/project/6.jpg" alt="project" class="image">
                                         </div>
                                         <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
+                                            <img src="images/project/6_red.jpg" alt="project" class="image hover">
                                             <div class="description">We worked out and launched the corporate website
                                                 for the Party of Growth (Partiya Rosta). The website is fully adaptive.
                                                 We made the exclusive design, html-coding and realization on 1C Bitrix
@@ -316,16 +394,15 @@
                                             </div>
                                         </div>
                                         <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow1.png" alt="shadow" class="image">
+                                            <img src="images/project/6_shadow.png" alt="shadow" class="image">
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="text-center">
                                 <a href="#" class="h3">Show more projects</a>
-
                             </div>
-        
+
                         </div>
                         <div class="content-tab" data-tab="website">
                             <div class="p-prj-list">
@@ -336,10 +413,10 @@
                                     </div>
                                     <div class="width">
                                         <div class="p-prj-thum">
-                                            <img src="images/project/image1.jpg" alt="project" class="image">
+                                            <img src="images/project/1.jpg" alt="project" class="image">
                                         </div>
                                         <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
+                                            <img src="images/project/1_red.jpg" alt="project" class="image hover">
                                             <div class="description">We worked out and launched the corporate website
                                                 for the Party of Growth (Partiya Rosta). The website is fully adaptive.
                                                 We made the exclusive design, html-coding and realization on 1C Bitrix
@@ -351,7 +428,7 @@
                                             </div>
                                         </div>
                                         <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow1.png" alt="shadow" class="image">
+                                            <img src="images/project/1_shadow.png" alt="shadow" class="image">
                                         </div>
                                     </div>
                                 </a>
@@ -362,10 +439,10 @@
                                     </div>
                                     <div class="width">
                                         <div class="p-prj-thum">
-                                            <img src="images/project/image2.jpg" alt="project" class="image">
+                                            <img src="images/project/2.jpg" alt="project" class="image">
                                         </div>
                                         <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
+                                            <img src="images/project/2_red.jpg" alt="project" class="image hover">
                                             <div class="description">We worked out and launched the corporate website
                                                 for the Party of Growth (Partiya Rosta). The website is fully adaptive.
                                                 We made the exclusive design, html-coding and realization on 1C Bitrix
@@ -377,16 +454,40 @@
                                             </div>
                                         </div>
                                         <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow2.jpg" alt="shadow" class="image">
+                                            <img src="images/project/2_shadow.png" alt="shadow" class="image">
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="p-prj-contents">
+                                    <div class="p-prj-caption">
+                                        <h3 class="h3 title">Vash Praazdnik</h3>
+                                        <small class="subtitle">&#8212; website</small>
+                                    </div>
+                                    <div class="width">
+                                        <div class="p-prj-thum">
+                                            <img src="images/project/3.jpg" alt="project" class="image">
+                                        </div>
+                                        <div class="p-prj-thum-hover">
+                                            <img src="images/project/3_red.jpg" alt="project" class="image hover">
+                                            <div class="description">We worked out and launched the corporate website
+                                                for the Party of Growth (Partiya Rosta). The website is fully adaptive.
+                                                We made the exclusive design, html-coding and realization on 1C Bitrix
+                                                base. The maintenance and support of the ptoject are provided
+                                                constantly.</div>
+                                            <div class="text-bottom">
+                                                <span>View Project Case</span>
+                                                <i class="icon-glyphter icon-arrow"></i>
+                                            </div>
+                                        </div>
+                                        <div class="p-prj-thum-shadow">
+                                            <img src="images/project/3_shadow.png" alt="shadow" class="image">
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="text-center">
                                 <a href="#" class="h3">Show more projects</a>
-
                             </div>
-        
                         </div>
                         <div class="content-tab" data-tab="corporate">
                             <div class="p-prj-list">
@@ -397,10 +498,10 @@
                                     </div>
                                     <div class="width">
                                         <div class="p-prj-thum">
-                                            <img src="images/project/image2.jpg" alt="project" class="image">
+                                            <img src="images/project/1.jpg" alt="project" class="image">
                                         </div>
                                         <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
+                                            <img src="images/project/1_red.jpg" alt="project" class="image hover">
                                             <div class="description">We worked out and launched the corporate website
                                                 for the Party of Growth (Partiya Rosta). The website is fully adaptive.
                                                 We made the exclusive design, html-coding and realization on 1C Bitrix
@@ -412,7 +513,7 @@
                                             </div>
                                         </div>
                                         <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow2.jpg" alt="shadow" class="image">
+                                            <img src="images/project/1_shadow.png" alt="shadow" class="image">
                                         </div>
                                     </div>
                                 </a>
@@ -423,10 +524,10 @@
                                     </div>
                                     <div class="width">
                                         <div class="p-prj-thum">
-                                            <img src="images/project/image2.jpg" alt="project" class="image">
+                                            <img src="images/project/2.jpg" alt="project" class="image">
                                         </div>
                                         <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
+                                            <img src="images/project/2_red.jpg" alt="project" class="image hover">
                                             <div class="description">We worked out and launched the corporate website
                                                 for the Party of Growth (Partiya Rosta). The website is fully adaptive.
                                                 We made the exclusive design, html-coding and realization on 1C Bitrix
@@ -438,42 +539,14 @@
                                             </div>
                                         </div>
                                         <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow2.jpg" alt="shadow" class="image">
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" class="p-prj-contents">
-                                    <div class="p-prj-caption">
-                                        <h3 class="h3 title">Vash Praazdnik</h3>
-                                        <small class="subtitle">&#8212; website</small>
-                                    </div>
-                                    <div class="width">
-                                        <div class="p-prj-thum">
-                                            <img src="images/project/image2.jpg" alt="project" class="image">
-                                        </div>
-                                        <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
-                                            <div class="description">We worked out and launched the corporate website
-                                                for the Party of Growth (Partiya Rosta). The website is fully adaptive.
-                                                We made the exclusive design, html-coding and realization on 1C Bitrix
-                                                base. The maintenance and support of the ptoject are provided
-                                                constantly.</div>
-                                            <div class="text-bottom">
-                                                <span>View Project Case</span>
-                                                <i class="icon-glyphter icon-arrow"></i>
-                                            </div>
-                                        </div>
-                                        <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow2.jpg" alt="shadow" class="image">
+                                            <img src="images/project/2_shadow.png" alt="shadow" class="image">
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="text-center">
                                 <a href="#" class="h3">Show more projects</a>
-
                             </div>
-        
                         </div>
                         <div class="content-tab" data-tab="programming">
                             <div class="p-prj-list">
@@ -484,10 +557,10 @@
                                     </div>
                                     <div class="width">
                                         <div class="p-prj-thum">
-                                            <img src="images/project/image2.jpg" alt="project" class="image">
+                                            <img src="images/project/1.jpg" alt="project" class="image">
                                         </div>
                                         <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
+                                            <img src="images/project/1_red.jpg" alt="project" class="image hover">
                                             <div class="description">We worked out and launched the corporate website
                                                 for the Party of Growth (Partiya Rosta). The website is fully adaptive.
                                                 We made the exclusive design, html-coding and realization on 1C Bitrix
@@ -499,68 +572,14 @@
                                             </div>
                                         </div>
                                         <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow2.jpg" alt="shadow" class="image">
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" class="p-prj-contents">
-                                    <div class="p-prj-caption">
-                                        <h3 class="h3 title">Vash Praazdnik</h3>
-                                        <small class="subtitle">&#8212; website</small>
-                                    </div>
-                                    <div class="width">
-                                        <div class="p-prj-thum">
-                                            <img src="images/project/image2.jpg" alt="project" class="image">
-                                        </div>
-                                        <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
-                                            <div class="description">We worked out and launched the corporate website
-                                                for the Party of Growth (Partiya Rosta). The website is fully adaptive.
-                                                We made the exclusive design, html-coding and realization on 1C Bitrix
-                                                base. The maintenance and support of the ptoject are provided
-                                                constantly.</div>
-                                            <div class="text-bottom">
-                                                <span>View Project Case</span>
-                                                <i class="icon-glyphter icon-arrow"></i>
-                                            </div>
-                                        </div>
-                                        <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow2.jpg" alt="shadow" class="image">
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" class="p-prj-contents">
-                                    <div class="p-prj-caption">
-                                        <h3 class="h3 title">Vash Praazdnik</h3>
-                                        <small class="subtitle">&#8212; website</small>
-                                    </div>
-                                    <div class="width">
-                                        <div class="p-prj-thum">
-                                            <img src="images/project/image2.jpg" alt="project" class="image">
-                                        </div>
-                                        <div class="p-prj-thum-hover">
-                                            <img src="images/project/hover.jpg" alt="project" class="image hover">
-                                            <div class="description">We worked out and launched the corporate website
-                                                for the Party of Growth (Partiya Rosta). The website is fully adaptive.
-                                                We made the exclusive design, html-coding and realization on 1C Bitrix
-                                                base. The maintenance and support of the ptoject are provided
-                                                constantly.</div>
-                                            <div class="text-bottom">
-                                                <span>View Project Case</span>
-                                                <i class="icon-glyphter icon-arrow"></i>
-                                            </div>
-                                        </div>
-                                        <div class="p-prj-thum-shadow">
-                                            <img src="images/project/image-shadow2.jpg" alt="shadow" class="image">
+                                            <img src="images/project/1_shadow.png" alt="shadow" class="image">
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="text-center">
                                 <a href="#" class="h3">Show more projects</a>
-
                             </div>
-        
                         </div>
                     </div>
                 </div>

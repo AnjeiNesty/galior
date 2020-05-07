@@ -1,6 +1,4 @@
 
-
-
 let ScrollPage = (function () {
     function ScrollPage(el) {
         this.DOM = {};
@@ -23,7 +21,6 @@ let ScrollPage = (function () {
             let heightSec = _a[_i].scrollHeight;
             let heightTop = _a[_i].offsetTop;
 
-            console.log(heightSec)
             this.sections.push(_a[_i]);
             this.sectionsHeight.push(heightSec);
             this.sectionsOffsetTop.push(heightTop);
@@ -44,7 +41,7 @@ let ScrollPage = (function () {
                 let direction = event.deltaY < 0 ? 'up' : 'down';
                 if (_this.sectionsHeight[idx] === _this.windowHeight) {
                     if (direction == 'up' && _this.point === 1) {
-                        if (idx === 0 && !(slide.offsetTop === 0) && _this.point === 1){
+                        if (idx === 0 && !(slide.offsetTop === 0) && _this.point === 1) {
                             _this.point = 0;
                             $('html').animate({ scrollTop: 0 }, 650, () => {
                                 _this.point = 1;
@@ -55,7 +52,7 @@ let ScrollPage = (function () {
                                 _this.point = 1;
                             });
                         }
-                        
+
                     } else if (direction == 'down' && _this.point === 1) {
                         _this.point = 0;
                         $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx + 1] }, 650, () => {
@@ -65,7 +62,7 @@ let ScrollPage = (function () {
                 } else {
                     if (direction == 'up') {
                         if (this.scrollTop === 0 && _this.point === 1) {
-                            if (idx === 0 && !(slide.offsetTop === 0) && _this.point === 1){
+                            if (idx === 0 && !(slide.offsetTop === 0) && _this.point === 1) {
                                 console.log('dada')
                                 _this.point = 0;
                                 $('html').animate({ scrollTop: 0 }, 650, () => {
@@ -73,7 +70,7 @@ let ScrollPage = (function () {
                                 });
                             } else {
                                 _this.point = 0;
-                                $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx - 1] },650, () => {
+                                $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx - 1] }, 650, () => {
                                     _this.point = 1;
                                 });
                             }
@@ -81,7 +78,7 @@ let ScrollPage = (function () {
                     } else if (direction == 'down') {
                         if (_this.sectionsHeight[idx] - _this.windowHeight === this.scrollTop && _this.point === 1) {
                             _this.point = 0;
-                            $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx + 1] },650, () => {
+                            $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx + 1] }, 650, () => {
                                 _this.point = 1;
                             });
                         }
@@ -115,8 +112,6 @@ if (document.querySelector('.slick')) {
 
     }
 }
-
-
 
 
 

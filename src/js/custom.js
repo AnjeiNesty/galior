@@ -7,17 +7,18 @@ $(document).ready(function () {
     hamburgerMenu();
     closeMenu();
     popup();
+    fancyboxIdx();
+    expandedAria();
 
 
 
 
 
 
+   
 
 
 
-    scrollBlock('go-home', 'first')
-    scrollBlock('click-next-block', 'second-block-anchor');
 
 
 
@@ -58,18 +59,22 @@ $(document).ready(function () {
         slidesToScroll: 1
     });
 
-    $('.vacancy-slider').on('init', function (event, slick, currentSlide) {
-        setTimeout(() => {
-            slick.$slides[0].classList.add('animate');
-        },0)
-       
-    });
-    $('.vacancy-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        slick.$slides[currentSlide].classList.remove('animate');
-        setTimeout(() => {
-            slick.$slides[nextSlide].classList.add('animate');
-        },600)
-    });
+
+
+  
+    // $('.vacancy-slider').on('init', function (event, slick, currentSlide) {
+    //     setTimeout(() => {
+    //         slick.$slides[0].classList.add('animate');
+    //     }, 0)
+
+    // });
+    // $('.vacancy-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+    //     slick.$slides[currentSlide].classList.remove('animate');
+    //     setTimeout(() => {
+    //         slick.$slides[nextSlide].classList.add('animate');
+    //     }, 600)
+    // });
+
 
 
     $('.vacancy-slider').slick({
@@ -134,7 +139,27 @@ $(document).ready(function () {
     });
 
     scrollBlock('click-next-block', 'second-block-anchor');
+
+
     */
+
+
+
+    $('.open-form').on('click', function() {
+        $('.start-project-popup').addClass('open');
+    });
+    $('.start-project-popup .close-popup').on('click', function() {
+        $('.start-project-popup').removeClass('open');
+    });
+
+
+    $('.vacancy-slider .information,.vacancy-slider .wrapper-form').on('wheel', function(e) {
+        e.stopPropagation();
+    });
+
+    scrollBlock('sendApp', 'second-block-anchor', true)
+    scrollBlock('go-home', 'first')
+    scrollBlock('click-next-block', 'second-block-anchor');
 });
 
 
@@ -153,21 +178,112 @@ $(window).on('scroll', function () {
 
 });
 
+function expandedAria() {
+    if($('textarea.auto-expand').length){
+        var main = $('textarea.auto-expand');
+        main.each(function () {
+            if ($(this).outerHeight() > this.scrollHeight){
+                $(this).height(1)
+            }
+            while ($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))){
+                $(this).height($(this).height() + 1)
+            }
+        });
+        main.on('keyup',function () {
+            var text = $(this).val();
+            $(this).html(text);
+        });
+        main.textareaAutoExpand();
+    }
+}
+
+(function($){
+    $.fn.textareaAutoExpand = function(){
+      return this.each(function(){
+        var textarea = $(this);
+        var height = textarea.height();
+        var diff = parseInt(textarea.css('borderBottomWidth')) + parseInt(textarea.css('borderTopWidth')) + 
+                   parseInt(textarea.css('paddingBottom')) + parseInt(textarea.css('paddingTop'));
+        var hasInitialValue = (this.value.replace(/\s/g, '').length > 0);
+
+
+     
+        
+        if (textarea.css('box-sizing') === 'border-box' || 
+            textarea.css('-moz-box-sizing') === 'border-box' || 
+            textarea.css('-webkit-box-sizing') === 'border-box') {
+          height = textarea.outerHeight();
+          
+          if (this.scrollHeight + diff == height) // special case for Firefox where scrollHeight isn't full height on border-box
+            diff = 0;
+        } else {
+          diff = 0;
+        }
+        
+        if (hasInitialValue) {
+          textarea.height(this.scrollHeight);
+          
+        }
+        
+        textarea.on('scroll input keyup', function(event){ // keyup isn't necessary but when deleting text IE needs it to reset height properly
+          if (event.keyCode == 13 && !event.shiftKey) {
+            // just allow default behavior to enter new line
+            if (this.value.replace(/\s/g, '').length == 0) {
+              event.stopImmediatePropagation();
+              event.stopPropagation();
+            }
+          }
+          
+          textarea.height(0);
+          if( this.scrollHeight - diff > 50) {
+            textarea.height(70);
+            textarea.addClass('max');
+          } else{
+            textarea.height(this.scrollHeight - diff + 1);
+            textarea.removeClass('max');
+          }
+          
+        });
+      });
+    }
+  })(jQuery);
+
+
+
+//fancybox idx slid
+function fancyboxIdx() {
+    let arrSlide = [];
+    $('#gallery .photo').each(function () {
+        arrSlide.push(this)
+    });
+    $("#gallery [data-fancybox]").fancybox({
+        beforeShow: function (instance, slide) {
+            // console.log(instance)
+            console.log(slide.index)
+            $("#gallery [data-fancybox]").addClass('display-none');
+            arrSlide[slide.index].classList.remove('display-none');
+
+
+
+        }
+    });
+}
+
+
 
 
 //input type file
-
-(function (document, window, index){
+(function (document, window, index) {
     'use strict';
     var inputs = document.querySelectorAll('.inputfile');
     Array.prototype.forEach.call(inputs, function (input) {
         var label = input.nextElementSibling,
-                labelVal = label.innerHTML;
+            labelVal = label.innerHTML;
 
         input.addEventListener('change', function (e) {
             var fileName = '';
             if (this.files && this.files.length > 1)
-                fileName = ( this.getAttribute('data-multiple-caption') || '' ).replace('{count}', this.files.length);
+                fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
             else
                 fileName = e.target.value.split('\\').pop();
 
@@ -197,11 +313,11 @@ function openTab(id) {
         var content_go = $('.wrapper-content-tab *[data-tab=' + id + ']');
         content_all.stop().fadeOut(150, function () {
             content_all.removeClass('open');
-          
+
             content_go.stop().fadeIn(200, function () {
                 content_go.addClass('open');
             });
-          
+
 
             tabs_all.removeClass('active');
             targ_tab.addClass('active');
@@ -257,25 +373,36 @@ function popup() {
 
 
 function closeMenu() {
-    $('.main-menu .icon-close').on('click', function () {
+    $('.main-menu .menu-content .icon-close').on('click', function () {
         $('.main-menu').removeClass('open-floor0 open');
     });
-    $('.main-menu .icon-close').on('click', function () {
+    $('.main-menu .menu-content .icon-close').on('click', function () {
         $('.main-menu').removeClass('open-floor1 open');
     });
-    $('.main-menu .icon-close').on('click', function () {
+    $('.main-menu .menu-content .icon-close').on('click', function () {
         $('.main-menu').removeClass('open-floor2 open');
     });
 
 }
 
 // Плавный скрол по блокам
-function scrollBlock(button, thisContent) {
+function scrollBlock(button, thisContent, and) {
     $('.' + button).on('click', function (e) {
         var heightTop = document.querySelectorAll('.' + thisContent)[0].offsetTop;
+
         e.preventDefault();
         e.stopPropagation();
         $('body,html,document').animate({ scrollTop: heightTop }, 750);
+
+        if (and) {
+
+
+
+            let per = document.querySelector('.vacancy-slider .slick-track').childElementCount;
+            console.log(per)
+            $('.vacancy-slider').slick('slickGoTo', per - 1);
+
+        }
     })
 }
 
@@ -386,7 +513,7 @@ var icons = [
 if (logosContainer) {
     var randomIcons = new RandomIcons(logosContainer, {
         maxVisible: 12,
-        timeout: 2000,
+        timeout: 1000,
         icons: icons
     });
 } else {
