@@ -4,8 +4,7 @@ windowWidth = $(window).width();
 $(document).ready(function () {
 
     bgImageFade();
-    hamburgerMenu();
-    closeMenu();
+   
     popup();
     fancyboxIdx();
     expandedAria();
@@ -15,7 +14,7 @@ $(document).ready(function () {
 
 
 
-   
+
 
 
 
@@ -61,7 +60,7 @@ $(document).ready(function () {
 
 
 
-  
+
     // $('.vacancy-slider').on('init', function (event, slick, currentSlide) {
     //     setTimeout(() => {
     //         slick.$slides[0].classList.add('animate');
@@ -143,17 +142,43 @@ $(document).ready(function () {
 
     */
 
-
-
-    $('.open-form').on('click', function() {
-        $('.start-project-popup').addClass('open');
+    const arrHamburg = document.querySelectorAll('.hamburger');
+    const thisClose = document.querySelector('.main-menu .menu-content .icon-close');
+    const footerClick = document.querySelectorAll('.open-menu-project');
+    arrHamburg.forEach((currentValue, index, arr) => {
+        currentValue.addEventListener('click', () => {
+            openMenu(currentValue);
+        })
     });
-    $('.start-project-popup .close-popup').on('click', function() {
-        $('.start-project-popup').removeClass('open');
+    if(thisClose) {
+        thisClose.addEventListener('click', () => {
+            closeMenu(thisClose);
+        });
+    }
+    if (footerClick) {
+        footerClick.forEach( (item) => {
+            item.addEventListener('click', () => {
+                openMenu(item);
+                addMenuForm();
+            });
+        });
+    }
+   
+
+
+
+
+
+   
+    $('.open-form').on('click', function () {
+        addMenuForm();
+    });
+    $('.start-project-popup .close-popup').on('click', function () {
+        closeMenuForm();
     });
 
 
-    $('.vacancy-slider .information,.vacancy-slider .wrapper-form').on('wheel', function(e) {
+    $('.vacancy-slider .information,.vacancy-slider .wrapper-form').on('wheel', function (e) {
         e.stopPropagation();
     });
 
@@ -178,18 +203,26 @@ $(window).on('scroll', function () {
 
 });
 
+function addMenuForm() {
+    $('.start-project-popup').addClass('open-project');
+}
+function closeMenuForm() {
+    $('.start-project-popup').removeClass('open-project');
+}
+
+
 function expandedAria() {
-    if($('textarea.auto-expand').length){
+    if ($('textarea.auto-expand').length) {
         var main = $('textarea.auto-expand');
         main.each(function () {
-            if ($(this).outerHeight() > this.scrollHeight){
+            if ($(this).outerHeight() > this.scrollHeight) {
                 $(this).height(1)
             }
-            while ($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))){
+            while ($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
                 $(this).height($(this).height() + 1)
             }
         });
-        main.on('keyup',function () {
+        main.on('keyup', function () {
             var text = $(this).val();
             $(this).html(text);
         });
@@ -197,56 +230,56 @@ function expandedAria() {
     }
 }
 
-(function($){
-    $.fn.textareaAutoExpand = function(){
-      return this.each(function(){
-        var textarea = $(this);
-        var height = textarea.height();
-        var diff = parseInt(textarea.css('borderBottomWidth')) + parseInt(textarea.css('borderTopWidth')) + 
-                   parseInt(textarea.css('paddingBottom')) + parseInt(textarea.css('paddingTop'));
-        var hasInitialValue = (this.value.replace(/\s/g, '').length > 0);
+(function ($) {
+    $.fn.textareaAutoExpand = function () {
+        return this.each(function () {
+            var textarea = $(this);
+            var height = textarea.height();
+            var diff = parseInt(textarea.css('borderBottomWidth')) + parseInt(textarea.css('borderTopWidth')) +
+                parseInt(textarea.css('paddingBottom')) + parseInt(textarea.css('paddingTop'));
+            var hasInitialValue = (this.value.replace(/\s/g, '').length > 0);
 
 
-     
-        
-        if (textarea.css('box-sizing') === 'border-box' || 
-            textarea.css('-moz-box-sizing') === 'border-box' || 
-            textarea.css('-webkit-box-sizing') === 'border-box') {
-          height = textarea.outerHeight();
-          
-          if (this.scrollHeight + diff == height) // special case for Firefox where scrollHeight isn't full height on border-box
-            diff = 0;
-        } else {
-          diff = 0;
-        }
-        
-        if (hasInitialValue) {
-          textarea.height(this.scrollHeight);
-          
-        }
-        
-        textarea.on('scroll input keyup', function(event){ // keyup isn't necessary but when deleting text IE needs it to reset height properly
-          if (event.keyCode == 13 && !event.shiftKey) {
-            // just allow default behavior to enter new line
-            if (this.value.replace(/\s/g, '').length == 0) {
-              event.stopImmediatePropagation();
-              event.stopPropagation();
+
+
+            if (textarea.css('box-sizing') === 'border-box' ||
+                textarea.css('-moz-box-sizing') === 'border-box' ||
+                textarea.css('-webkit-box-sizing') === 'border-box') {
+                height = textarea.outerHeight();
+
+                if (this.scrollHeight + diff == height) // special case for Firefox where scrollHeight isn't full height on border-box
+                    diff = 0;
+            } else {
+                diff = 0;
             }
-          }
-          
-          textarea.height(0);
-          if( this.scrollHeight - diff > 50) {
-            textarea.height(70);
-            textarea.addClass('max');
-          } else{
-            textarea.height(this.scrollHeight - diff + 1);
-            textarea.removeClass('max');
-          }
-          
+
+            if (hasInitialValue) {
+                textarea.height(this.scrollHeight);
+
+            }
+
+            textarea.on('scroll input keyup', function (event) { // keyup isn't necessary but when deleting text IE needs it to reset height properly
+                if (event.keyCode == 13 && !event.shiftKey) {
+                    // just allow default behavior to enter new line
+                    if (this.value.replace(/\s/g, '').length == 0) {
+                        event.stopImmediatePropagation();
+                        event.stopPropagation();
+                    }
+                }
+
+                textarea.height(0);
+                if (this.scrollHeight - diff > 50) {
+                    textarea.height(70);
+                    textarea.addClass('max');
+                } else {
+                    textarea.height(this.scrollHeight - diff + 1);
+                    textarea.removeClass('max');
+                }
+
+            });
         });
-      });
     }
-  })(jQuery);
+})(jQuery);
 
 
 
@@ -331,18 +364,77 @@ function openTab(id) {
 
 
 
-function hamburgerMenu() {
-    let arr = [];
 
-    $('.hamburger').each(function (i, idx) {
-        $(this).on('click', function () {
-            $('.main-menu').addClass('open-floor' + i);
-            setTimeout(() => {
-                $('.main-menu').addClass('open')
-            }, 100)
-        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let stateBlock;
+let menu = document.querySelector('.main-menu');
+
+
+const openMenu = (currentValue) => {
+    let thisOffsetTop = currentValue.closest('section').offsetTop;
+    let startOffsetTop = thisOffsetTop - currentValue.closest('section').clientHeight;
+    stateBlock = startOffsetTop;
+    let open = new Promise(
+        function (resolve, reject) {
+            menu.setAttribute("style", `top: ${startOffsetTop}px`);
+            resolve();
+        }
+    )
+    open.then(() => {
+        setTimeout(() => {
+            menu.classList.add('open');
+            menu.setAttribute("style", `top: ${thisOffsetTop}px; opacity: 1`);
+        }, 100)
     });
 }
+
+
+const closeMenu = (thisClose) => {
+    let close = new Promise(
+        function (resolve, reject) {
+            thisClose.closest('.main-menu').setAttribute("style", `top: ${stateBlock}px`);
+            resolve();
+        }
+    )
+    close.then(() => {
+        setTimeout(() => {
+            thisClose.closest('.main-menu').classList.remove('open');
+            thisClose.closest('.main-menu').setAttribute("style", "top: -101%");
+        }, 500);
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function popup() {
     $('.we-work-with .item').on('click', function () {
@@ -372,18 +464,7 @@ function popup() {
 }
 
 
-function closeMenu() {
-    $('.main-menu .menu-content .icon-close').on('click', function () {
-        $('.main-menu').removeClass('open-floor0 open');
-    });
-    $('.main-menu .menu-content .icon-close').on('click', function () {
-        $('.main-menu').removeClass('open-floor1 open');
-    });
-    $('.main-menu .menu-content .icon-close').on('click', function () {
-        $('.main-menu').removeClass('open-floor2 open');
-    });
 
-}
 
 // Плавный скрол по блокам
 function scrollBlock(button, thisContent, and) {
