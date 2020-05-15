@@ -12,6 +12,13 @@ $(document).ready(function () {
 
 
 
+    document.addEventListener('touchmove', () => {
+        document.querySelector('body').classList.add('touch-action')
+
+    });
+
+
+
 
 
 
@@ -367,56 +374,23 @@ function openTab(id) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-let stateBlock;
+let scrollTop;
 let menu = document.querySelector('.main-menu');
-
-
-const openMenu = (currentValue) => {
-    let thisOffsetTop = currentValue.closest('section').offsetTop;
-    let startOffsetTop = thisOffsetTop - currentValue.closest('section').clientHeight;
-    stateBlock = startOffsetTop;
-    let open = new Promise(
-        function (resolve, reject) {
-            menu.setAttribute("style", `top: ${startOffsetTop}px`);
-            resolve();
-        }
-    )
-    open.then(() => {
-        setTimeout(() => {
-            menu.classList.add('open');
-            menu.setAttribute("style", `top: ${thisOffsetTop}px; opacity: 1`);
-        }, 100)
-    });
+const openMenu = () => {
+    scrollTop = window.pageYOffset;
+    menu.classList.add('open');  
+    setTimeout( () => {
+        document.querySelector('body').classList.add('open-mobile-menu');
+    }, 600)
 }
-
-
 const closeMenu = (thisClose) => {
-    let close = new Promise(
-        function (resolve, reject) {
-            thisClose.closest('.main-menu').setAttribute("style", `top: ${stateBlock}px`);
-            resolve();
-        }
-    )
-    close.then(() => {
-        setTimeout(() => {
-            thisClose.closest('.main-menu').classList.remove('open');
-            thisClose.closest('.main-menu').setAttribute("style", "top: -101%");
-        }, 500);
-    });
+    console.log(scrollTop)
+    document.querySelector('body').classList.remove('open-mobile-menu')
+    window.scrollTo(0, scrollTop)
+    thisClose.closest('.main-menu').classList.remove('open');
+   
 }
+
 
 
 
