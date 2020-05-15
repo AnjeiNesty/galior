@@ -32,37 +32,37 @@ let ScrollPage = (function () {
     };
 
     ScrollPage.prototype.resize = function() {
-        window.onresize = function(event) {
-            this.widowWidth = window.innerWidth;
-            if(this.widowWidth >= 992){
-                if(_this.scroll === true){
-                    console.log('зашло')
-                    _this.addEvent();
-                }
-                console.log('da')
-            } else {
-                console.log('net')
-                // slide.removeEventListener('wheel'
-            }
-        };
+        // window.onresize = function(event) {
+        //     this.widowWidth = window.innerWidth;
+        //     if(this.widowWidth >= 992){
+        //         if(_this.scroll === true){
+        //             console.log('зашло')
+        //             _this.addEvent();
+        //         }
+        //         console.log('da')
+        //     } else {
+        //         console.log('net')
+        //         // slide.removeEventListener('wheel'
+        //     }
+        // };
     }
 
 
     ScrollPage.prototype.addEvent = function () {
         var _this = this;
         this.sections.forEach(function (slide, idx) {
-            slide.addEventListener('wheel', _this.scrollNext( event, slide, idx));
+            slide.addEventListener('wheel', function () {
+                _this.scrollNext(slide, idx);
+            });
         });
     }
 
-    ScrollPage.prototype.scrollNext = function (event, slide, idx) {
+    ScrollPage.prototype.scrollNext = function (slide, idx) {
         var _this = this;
         // let direction = event.changedTouches[0].pageY
         // console.log(slide.offsetTop)
         // console.log(_this.sectionsHeight)
-        // console.log('111')
-        console.log(slide)
-        console.log(idx)
+       
         let direction = event.deltaY < 0 ? 'up' : 'down';
         if (_this.sectionsHeight[idx] === _this.windowHeight) {
             if (direction == 'up' && _this.point === 1) {
@@ -86,14 +86,15 @@ let ScrollPage = (function () {
             }
         } else {
             if (direction == 'up') {
-                if (this.scrollTop === 0 && _this.point === 1) {
+                if (slide.scrollTop === 0 && _this.point === 1) {
                     if (idx === 0 && !(slide.offsetTop === 0) && _this.point === 1) {
-                        console.log('dada')
+                       
                         _this.point = 0;
                         $('html').animate({ scrollTop: 0 }, 650, () => {
                             _this.point = 1;
                         });
                     } else {
+                        console.log('dada')
                         _this.point = 0;
                         $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx - 1] }, 650, () => {
                             _this.point = 1;
@@ -101,7 +102,7 @@ let ScrollPage = (function () {
                     }
                 }
             } else if (direction == 'down') {
-                if (_this.sectionsHeight[idx] - _this.windowHeight === this.scrollTop && _this.point === 1) {
+                if (_this.sectionsHeight[idx] - _this.windowHeight === slide.scrollTop && _this.point === 1) {
                     _this.point = 0;
                     $('html').animate({ scrollTop: _this.sectionsOffsetTop[idx + 1] }, 650, () => {
                         _this.point = 1;

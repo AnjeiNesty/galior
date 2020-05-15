@@ -57,6 +57,7 @@ $(document).ready(function () {
     });
     $('.slick-peoples').slick({
         dots: false,
+        arrows: false,
         infinite: true,
         autoplay: true,
         autoplaySpeed: 3000,
