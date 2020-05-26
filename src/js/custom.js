@@ -1,5 +1,6 @@
 let windowWidth;
 windowWidth = $(window).width();
+let hoverP = 1;
 
 $(document).ready(function () {
 
@@ -13,7 +14,14 @@ $(document).ready(function () {
 
 
     document.addEventListener('touchmove', () => {
-        document.querySelector('body').classList.add('touch-action')
+        document.querySelector('body').classList.add('touch-action');
+        document.querySelector('body').classList.remove('hover-class');
+
+
+        if(hoverP === 1){
+            hoverProject();
+        }
+      
 
     });
 
@@ -38,23 +46,16 @@ $(document).ready(function () {
     languageMenu();
     mobileSubMenu();
     scrollBlock('click-next-block', 'second-block-anchor');
+
+
     */
-    $('.slick-peoples').on('init', function (event, slick, currentSlide) {
-        slick.$slides[1].classList.add('animate');
-    });
 
-    $('.slick-peoples').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        if (currentSlide === slick.slideCount - 1) {
-            $(`.slick-peoples .slick-slide[data-slick-index=${currentSlide + 1}]`).removeClass('animate')
-            $(`.slick-peoples .slick-slide[data-slick-index=${nextSlide + 1}]`).addClass('animate')
-            $(`.slick-peoples .slick-slide[data-slick-index=${currentSlide + 2}]`).addClass('animate')
-
-        } else {
-            $(`.slick-peoples .slick-slide[data-slick-index=${slick.slideCount + 1}]`).removeClass('animate')
-            $(`.slick-peoples .slick-slide[data-slick-index=${currentSlide + 1}]`).removeClass('animate')
-            $(`.slick-peoples .slick-slide[data-slick-index=${nextSlide + 1}]`).addClass('animate')
-        }
-    });
+    if(windowWidth >= 992){
+        sliderPeoplesActiveSecond();
+    } else {
+        sliderPeoplesActiveFirst();
+    }
+  
     $('.slick-peoples').slick({
         dots: false,
         arrows: false,
@@ -63,7 +64,89 @@ $(document).ready(function () {
         autoplaySpeed: 3000,
         speed: 1100,
         slidesToShow: 4,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1500,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+
+                }
+            },
+            {
+                breakpoint: 991,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '280px',
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 900,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '230px',
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 830,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '220px',
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 730,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '180px',
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 650,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '140px',
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 575,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '100px',
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 460,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '70px',
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 400,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     });
 
 
@@ -90,6 +173,7 @@ $(document).ready(function () {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
+        adaptiveHeight: true,
         fade: true,
         cssEase: 'ease-in-out',
         nextArrow: '<div class="slick-next"><i class="icon-glyphter icon-next"></i></div>',
@@ -202,7 +286,16 @@ $(window).on('load', function () {
 
 
 $(window).on('resize', function () {
-
+    windowWidth = $(window).width();
+    if(windowWidth >= 992){
+        if(!$('.slick-peoples').hasClass('second-active')){
+            sliderPeoplesActiveSecond();
+        }
+    }else {
+        if(!$('.slick-peoples').hasClass('first-active')){
+            sliderPeoplesActiveFirst();
+        }
+    }
 
 });
 
@@ -211,6 +304,52 @@ $(window).on('scroll', function () {
 
 });
 
+function sliderPeoplesActiveSecond(){
+    $('.slick-peoples').on('init', function (event, slick, currentSlide) {
+        slick.$slides[1].classList.add('animate');
+    });
+    $('.slick-peoples').removeClass('first-active');
+    $('.slick-peoples').addClass('second-active');
+    $('.slick-peoples').off('beforeChange');
+    $('.slick-peoples').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        if (currentSlide === slick.slideCount - 1) {
+            $(`.slick-peoples .slick-slide[data-slick-index=${currentSlide + 1}]`).removeClass('animate')
+            $(`.slick-peoples .slick-slide[data-slick-index=${nextSlide + 1}]`).addClass('animate')
+            $(`.slick-peoples .slick-slide[data-slick-index=${currentSlide + 2}]`).addClass('animate')
+
+        } else {
+            $(`.slick-peoples .slick-slide[data-slick-index=${slick.slideCount + 1}]`).removeClass('animate')
+            $(`.slick-peoples .slick-slide[data-slick-index=${currentSlide + 1}]`).removeClass('animate')
+            $(`.slick-peoples .slick-slide[data-slick-index=${nextSlide + 1}]`).addClass('animate')
+        }
+    });
+}
+
+function sliderPeoplesActiveFirst(){
+    $('.slick-peoples').on('init', function (event, slick, currentSlide) {
+        slick.$slides[0].classList.add('animate');
+    });
+    $('.slick-peoples').removeClass('second-active');
+    $('.slick-peoples').addClass('first-active');
+    $('.slick-peoples').off('beforeChange');
+    $('.slick-peoples').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        if (currentSlide === slick.slideCount - 1) {
+            console.log('da')
+            $(`.slick-peoples .slick-slide[data-slick-index=${slick.slideCount}]`).addClass('animate');
+            slick.$slides[slick.slideCount - 1].classList.remove('animate');
+            slick.$slides[0].classList.add('animate');
+
+        } else {
+            slick.$slides[currentSlide].classList.remove('animate');
+            slick.$slides[nextSlide].classList.add('animate');
+            $(`.slick-peoples .slick-slide[data-slick-index=${slick.slideCount}]`).removeClass('animate');
+        }
+    });
+}
+
+
+
+
 function addMenuForm() {
     $('.start-project-popup').addClass('open-project');
 }
@@ -218,6 +357,20 @@ function closeMenuForm() {
     $('.start-project-popup').removeClass('open-project');
 }
 
+
+
+function hoverProject() {
+    hoverP = 0;
+    $('.p-prj-contents').each(function(){
+       $(this).on('click', function() {
+            let $this = $(this);
+            $this.closest('.p-prj-list').find('.p-prj-contents').not($this).removeClass('active');
+            $(this).toggleClass('active');
+       })
+    });
+    
+
+}
 
 function expandedAria() {
     if ($('textarea.auto-expand').length) {
@@ -421,6 +574,7 @@ function popup() {
             $('.we-work-with').find('.active').removeClass('active');
             _this.addClass('active');
         } else {
+            $(this).closest('.section').addClass('z-index');
             $('.popup').addClass('open');
             $('.popup').find(`[data-logo=${thisAtr}]`).addClass('active');
             _this.closest('.we-work-with').addClass('animate');
@@ -431,6 +585,7 @@ function popup() {
 
     });
     $('.popup .close').on('click', function () {
+        $(this).closest('.section').removeClass('z-index');
         $(this).closest('.popup').removeClass('open');
         $(this).closest('.popup').find('.active').removeClass('active');
         $('.we-work-with').removeClass('animate');
