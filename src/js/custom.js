@@ -3,15 +3,41 @@ windowWidth = $(window).width();
 let hoverP = 1;
 
 $(document).ready(function () {
+    if (document.querySelector('.slick')) {
+        $('.slick').on('init', function (event, slick, direction) {
+            const wrapperBlock = document.querySelector('#fullBlock');
+            if (wrapperBlock) {
+                let scrollPage = new ScrollPage(wrapperBlock);
+            } else {
+    
+            }
+        });
+    
+    } else {
+        const wrapperBlock = document.querySelector('#fullBlock');
+        if (wrapperBlock) {
+            let scrollPage = new ScrollPage(wrapperBlock);
+        } else {
+    
+        }
+    }
+
+
+
 
     bgImageFade();
-   
     popup();
     fancyboxIdx();
     expandedAria();
+    tableWrap();
+    
+
+
+   
 
 
 
+  
 
     document.addEventListener('touchmove', () => {
         document.querySelector('body').classList.add('touch-action');
@@ -270,13 +296,22 @@ $(document).ready(function () {
     });
 
 
-    $('.vacancy-slider .information,.vacancy-slider .wrapper-form').on('wheel', function (e) {
+    $('.vacancy-slider .information,.vacancy-slider .wrapper-form, .popup .wrapper').on('wheel', function (e) {
         e.stopPropagation();
     });
+    initSelect();
 
     scrollBlock('sendApp', 'second-block-anchor', true)
     scrollBlock('go-home', 'first')
     scrollBlock('click-next-block', 'second-block-anchor');
+
+    $('.selectTabs').on('select2:select', function () {
+        var dataGo = $(this).find(":selected").data("go");
+        openTab(dataGo);
+    });
+
+
+
 });
 
 
@@ -303,6 +338,14 @@ $(window).on('resize', function () {
 $(window).on('scroll', function () {
 
 });
+
+function tableWrap() {
+    if ($('table').length) {
+        $('table').each(function () {
+            $(this).wrap("<div class='table'></div>");
+        });
+    }
+}
 
 function sliderPeoplesActiveSecond(){
     $('.slick-peoples').on('init', function (event, slick, currentSlide) {
@@ -595,6 +638,13 @@ function popup() {
 
 
 
+//preloader
+function addPreloader(obj) {
+    $(obj).append("<div class='preload'><div class='container-preload'><img src='/images/svg/oval.svg' width='50' alt=''></div></div>");
+}
+function closePreloader(obj) {
+    $(obj).find(".preload").detach();
+}
 
 // Плавный скрол по блокам
 function scrollBlock(button, thisContent, and) {
@@ -850,7 +900,7 @@ function tabAll(enable) {
         });
     }
 }
-
+*/
 function formatStateCountry(state) {
     if (!state.id) {
         return state.text;
@@ -903,59 +953,38 @@ function initSelect() {
 
 
         $(".select-search").each(function () {
-            var selectParams = {
-                placeholder: '',
-                minimumResultsForSearch: Infinity,
-                templateResult: select2CopyClasses,
-                templateSelection: select2CopyClasses
-            };
-            $(this).select2(selectParams);
-            if ($(this).attr('data-ph')) {
-                var selectPlaceholder = $(this).attr('data-ph');
-                $(this).next().find('.select2-selection__placeholder').text(selectPlaceholder);
+            var id = $(this).attr('id');
+            var selectParams = {};
+            if (id) {
+                selectParams.containerCssClass = 'select_container_' + id;
             }
+
+            $(this).select2(selectParams);
         });
 
         $(".select-search-placeholder").select2({
             placeholder: ''
         });
-        $(".select-placeholder").each(function () {
-            var selectParams = {
-                placeholder: '',
-                minimumResultsForSearch: Infinity,
-                templateResult: select2CopyClasses,
-                templateSelection: select2CopyClasses
-            };
-            $(this).select2(selectParams);
-            if ($(this).attr('data-ph')) {
-                var selectPlaceholder = $(this).attr('data-ph');
-                $(this).next().find('.select2-selection__placeholder').text(selectPlaceholder);
-            }
+        $(".select-placeholder").select2({
+            placeholder: '',
+            minimumResultsForSearch: Infinity
         });
-
-
-        function select2CopyClasses(data, container) {
-            if (data.element) {
-                $(container).data('go', $(data.element).attr("data-go"));
-                $(container).data('filter', $(data.element).attr("data-filter"));
-            }
-            return data.text;
-        }
 
         $("select").each(function () {
             var id = $(this).attr('id');
             if (!$(this).hasClass('select2-hidden-accessible')) {
                 var selectParams = {
-                    minimumResultsForSearch: Infinity,
-                    templateResult: select2CopyClasses,
-                    templateSelection: select2CopyClasses
+                    minimumResultsForSearch: Infinity
                 };
                 if (id) {
                     selectParams.containerCssClass = 'select_container_' + id;
                 }
                 $(this).select2(selectParams);
             }
+            if ($(this).attr('data-ph')) {
+                var selectPlaceholder = $(this).attr('data-ph');
+                $(this).next().find('.select2-selection__placeholder').text(selectPlaceholder);
+            }
         });
     }
 }
-*/

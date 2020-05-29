@@ -15,6 +15,9 @@
 
 @media all and (max-width: 1800px) {
   .slick-peoples {
+    left: 0;
+    width: 100%;
+
     &::before {
       top: 114px;
       height: calc(100% - 114px);
@@ -280,6 +283,23 @@
         line-height: 1.5;
       }
     }
+  }
+  .contact{
+    overflow: inherit;
+    .content-first-block{
+      .container{
+        height: auto;
+      }
+    }
+    .row{
+      .text{
+        padding: 0 15px;
+        overflow: inherit;
+      }
+    }
+  }
+  .p-prj-list .link-with-arrow .animate-arrow{
+    padding-right: 100px;
   }
 }
 
@@ -726,6 +746,22 @@
     height: auto!important;
     overflow: inherit!important;
   }
+  .fancybox-navigation{
+    .fancybox-button--arrow_right{
+      right: 40px;
+    }
+    .fancybox-button--arrow_left{
+      left: 40px;
+    }
+  }
+  .fancybox-button--close{
+    right: 45px;
+  }
+  .case{
+    .wrapper-content-case{
+      margin-top: 15px;
+    }
+  }
 }
 
 @media all and (max-width: 991px) and (max-height: 1000px) {
@@ -738,6 +774,9 @@
 }
 
 @media all and (max-width: 767px) {
+  .p-prj-list .link-with-arrow .animate-arrow {
+    padding-right: 59px;
+  }
   .main-menu {
     .start-project-popup {
       .wrapper-btn {
@@ -927,6 +966,7 @@
   .p-prj-list {
     margin-left: -6vw;
     width: calc(100% + 12vw);
+    padding-top: 35px;
     .image{
       height: 390px;
     }
@@ -1008,6 +1048,62 @@
   .checkbox-block{
     columns: 2;
   }
+  .project-select{
+  	.wrapper-select{
+      display: block;
+      display: flex;
+      justify-content: center;
+    }
+    .ul{
+      display: none;
+    }
+  }
+  .project .content-first-block .container{
+    padding-top: 10px;
+  }
+  .fancybox-navigation{
+    .fancybox-button--arrow_right{
+      width: 55px;
+      height: 55px;
+      right: 30px;
+      &::before{
+        font-size: 24px;
+      }
+    }
+    .fancybox-button--arrow_left{
+      width: 55px;
+      height: 55px;
+      left: 30px;
+      &::before{
+        font-size: 24px;
+      }
+    }
+  }
+  .fancybox-button--close{
+    right: 32px;
+    &::before{
+      font-size: 24px;
+    }
+  }
+  .case{
+    .wrapper-content-case{
+      .caption-case{
+        margin-left: 43px;
+        padding-right: 40px;
+        margin-top: 10px;
+        padding-bottom: 15px;
+        display: block;
+      }
+    }
+    header{
+      .breadcrumbs{
+        display: block;
+      }
+      .caption-case{
+        display: none;
+      }
+    }
+  }
 }
 
 @media all and (max-width: 767px) and (max-height: 725px) {
@@ -1045,6 +1141,9 @@
       padding-top: 20px;
     }
     .wrapper-logo {
+      height: 35px;
+    }
+    .link-logo{
       height: 35px;
     }
     .logo {
@@ -1341,7 +1440,7 @@
   }
   .p-prj-list {
     padding-bottom: 20px;
-    padding-top: 70px;
+    padding-top: 25px;
     padding-left: 20px;
     padding-right: 20px;
     display: flex;
@@ -1355,7 +1454,7 @@
     }
   }
   .p-prj-contents{
-    margin-bottom: 90px!important;
+    margin-bottom: 50px!important;
     .width{
       width: 100%;
       margin-top: 52px;
@@ -1363,7 +1462,7 @@
     width: 290px;
   }
   .p-prj-contents:nth-child(2n) {
-    margin: 0 0 90px!important;
+    margin: 0 0 50px!important;
   }
   .p-prj-contents .text-bottom {
     left: -20px;
@@ -1371,19 +1470,19 @@
     width: 120%;
   }
   .hover-class .p-prj-contents:hover .text-bottom , .p-prj-contents.active .text-bottom{
-    bottom: -64px;
+    bottom: -30px;
   }
   .hover-class .p-prj-contents:hover .p-prj-thum-hover .image,  .p-prj-contents.active .p-prj-thum-hover .image{
-    transform: scale3d(1.2, 1.35, 1);
+    transform: scale3d(1.2, 1.2, 1);
   }
   .hover-class .p-prj-contents:hover .p-prj-thum .image, .p-prj-contents.active .p-prj-thum .image{
-    transform: scale3d(1.2, 1.35, 1);
+    transform: scale3d(1.2, 1.2, 1);
   }
   .p-prj-thum-hover .image, .p-prj-thum .image{
-    transform-origin: 100px 271px;
+    transform-origin: 138px 349px;
   }
   .p-prj-contents .text-bottom{
-    bottom: -90px;
+    bottom: -50px;
   }
   .p-prj-thum-shadow .image {
     right: 1%;
@@ -1495,29 +1594,100 @@
   .block-form .wrapper-btn {
     margin-top: 40px;
   }
+  .select2{
+    min-width: inherit;
+    margin-top: 8px;
+    width: auto!important;
+  }
+  .select2-container--default .select2-selection--single .select2-selection__rendered{
+    padding-right: 50px;
+    box-shadow: none;
+  }
+  .select2-container--open.select2-container ul li{
+    text-align: center;
+  }
+  .select2-results__options{
+    padding-bottom: 12px;
+    box-shadow: none;
+    position: absolute;
+    left: -132%;
+    top: 0;
+    width: calc(100% + 264%);
+  }
+  .fancybox-navigation{
+    .fancybox-button--arrow_right{
+      width: 40px;
+      height: 40px;
+      right: 15px;
+      &::before{
+        font-size: 20px;
+      }
+    }
+    .fancybox-button--arrow_left{
+      width: 40px;
+      height: 40px;
+      left: 15px;
+      &::before{
+        font-size: 20px;
+      }
+    }
+  }
+  .fancybox-button--close{
+    right: 8px;
+    top: 20px;
+    &::before{
+      font-size: 20px;
+    }
+  }
+  .case{
+    .text{
+      .name{
+        font-size: 20px;
+        line-height: 23px;
+      }
+      .subtext{
+        line-height: 23px;
+      }
+    }
+    .wrapper-content-case{
+      .caption-case{
+        margin-left: 17px;
+        padding-right: 40px;
+        margin-top: 15px;
+        padding-bottom: 15px;
+      }
+    }
+  }
  
 }
 
 @media all and (max-width: 480px) {
   .hover-class .p-prj-contents:hover .p-prj-thum-hover .image, .p-prj-contents.active .p-prj-thum-hover .image{
-    transform: scale3d(1.30, 1.35, 1);
+    transform: scale3d(1.18, 1.20, 1);
   }
   .hover-class .p-prj-contents:hover .p-prj-thum .image, .p-prj-contents.active .p-prj-thum .image{
-    transform: scale3d(1.30, 1.35, 1);
+    transform: scale3d(1.18, 1.20, 1);
   }
   .p-prj-thum-hover .image, .p-prj-thum .image{
-    transform-origin: 40px 271px;
+    transform-origin: 138px 356px;
   }
   .p-prj-list {
     padding-left: 0;
-    padding-top: 60px;
-    padding-right: 40px;
+    padding-top: 25px;
+    padding-right: 0;
+    overflow: inherit;
   }
   .p-prj-contents {
-    width: 241px;
-  }
+    width: 285px;
+  } 
   .p-prj-thum-shadow .image {
     right: 11%;
+  }
+  .p-prj-contents {
+    margin-bottom: 40px !important;
+  }
+  .p-prj-contents:nth-child(2n) {
+    margin: 0 0 40px !important;
   }
   .p-prj-caption{
     padding-left: 15px;

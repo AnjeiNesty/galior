@@ -13,8 +13,9 @@ let ScrollPage = (function () {
         this.direction = '';
         this.currentSection = '';
         this.currentIdx;
-        this.init();
         mainThis = this;
+        this.init();
+       
 
 
     };
@@ -69,15 +70,12 @@ let ScrollPage = (function () {
 
     ScrollPage.prototype.addEvent = function () {
         var _this = this;
-        document.addEventListener('wheel', function (event) {
-            _this.direction = event.deltaY < 0 ? 'up' : 'down';
-        });
         this.sections.forEach(function (slide, idx) {
             _this.currentSection = idx;
-            slide.addEventListener('wheel', function () {
+            slide.addEventListener('wheel', function (event) {
+                _this.direction = event.deltaY < 0 ? 'up' : 'down';
                 _this.currentSection = slide;
                 _this.currentIdx = idx;
-
             });
         });
         this.sections.forEach(function (slide, idx) {
@@ -87,6 +85,10 @@ let ScrollPage = (function () {
     }
 
     ScrollPage.prototype.scrollNext = function () {
+        // console.log(`direction --- ${mainThis.direction}`)
+        // console.log(`this section height --- ${mainThis.sectionsHeight}`)
+        // console.log(`this window height --- ${mainThis.windowHeight}`)
+        // console.log(`this section offset top --- ${mainThis.currentSection.offsetTop}`)
         // console.log(mainThis.sectionsHeight)
         // let direction = event.changedTouches[0].pageY
         if (mainThis.sectionsHeight[mainThis.currentIdx] === mainThis.windowHeight) {
@@ -140,24 +142,7 @@ let ScrollPage = (function () {
 }());
 
 
-if (document.querySelector('.slick')) {
-    $('.slick').on('init', function (event, slick, direction) {
-        const wrapperBlock = document.querySelector('#fullBlock');
-        if (wrapperBlock) {
-            let scrollPage = new ScrollPage(wrapperBlock);
-        } else {
 
-        }
-    });
-
-} else {
-    const wrapperBlock = document.querySelector('#fullBlock');
-    if (wrapperBlock) {
-        let scrollPage = new ScrollPage(wrapperBlock);
-    } else {
-
-    }
-}
 
 
 
