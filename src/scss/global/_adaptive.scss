@@ -746,16 +746,18 @@
     height: auto!important;
     overflow: inherit!important;
   }
-  .fancybox-navigation{
-    .fancybox-button--arrow_right{
-      right: 40px;
+  .fancybox-style-slider {
+    .fancybox-navigation{
+      .fancybox-button--arrow_right{
+        right: 40px;
+      }
+      .fancybox-button--arrow_left{
+        left: 40px;
+      }
     }
-    .fancybox-button--arrow_left{
-      left: 40px;
+    .fancybox-button--close{
+      right: 45px;
     }
-  }
-  .fancybox-button--close{
-    right: 45px;
   }
   .case{
     .wrapper-content-case{
@@ -1061,30 +1063,33 @@
   .project .content-first-block .container{
     padding-top: 10px;
   }
-  .fancybox-navigation{
-    .fancybox-button--arrow_right{
-      width: 55px;
-      height: 55px;
-      right: 30px;
-      &::before{
-        font-size: 24px;
+  .fancybox-style-slider {
+    .fancybox-navigation{
+      .fancybox-button--arrow_right{
+        width: 55px;
+        height: 55px;
+        right: 30px;
+        &::before{
+          font-size: 24px;
+        }
+      }
+      .fancybox-button--arrow_left{
+        width: 55px;
+        height: 55px;
+        left: 30px;
+        &::before{
+          font-size: 24px;
+        }
       }
     }
-    .fancybox-button--arrow_left{
-      width: 55px;
-      height: 55px;
-      left: 30px;
+    .fancybox-button--close{
+      right: 32px;
       &::before{
         font-size: 24px;
       }
     }
   }
-  .fancybox-button--close{
-    right: 32px;
-    &::before{
-      font-size: 24px;
-    }
-  }
+
   .case{
     .wrapper-content-case{
       .caption-case{
@@ -1614,31 +1619,34 @@
     top: 0;
     width: calc(100% + 264%);
   }
-  .fancybox-navigation{
-    .fancybox-button--arrow_right{
-      width: 40px;
-      height: 40px;
-      right: 15px;
-      &::before{
-        font-size: 20px;
+  .fancybox-style-slider {
+    .fancybox-navigation{
+      .fancybox-button--arrow_right{
+        width: 40px;
+        height: 40px;
+        right: 15px;
+        &::before{
+          font-size: 20px;
+        }
+      }
+      .fancybox-button--arrow_left{
+        width: 40px;
+        height: 40px;
+        left: 15px;
+        &::before{
+          font-size: 20px;
+        }
       }
     }
-    .fancybox-button--arrow_left{
-      width: 40px;
-      height: 40px;
-      left: 15px;
+    .fancybox-button--close{
+      right: 8px;
+      top: 20px;
       &::before{
         font-size: 20px;
       }
     }
   }
-  .fancybox-button--close{
-    right: 8px;
-    top: 20px;
-    &::before{
-      font-size: 20px;
-    }
-  }
+ 
   .case{
     .text{
       .name{

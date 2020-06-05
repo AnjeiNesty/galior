@@ -2,25 +2,10 @@ let windowWidth;
 windowWidth = $(window).width();
 let hoverP = 1;
 
+
+
 $(document).ready(function () {
-    if (document.querySelector('.slick')) {
-        $('.slick').on('init', function (event, slick, direction) {
-            const wrapperBlock = document.querySelector('#fullBlock');
-            if (wrapperBlock) {
-                let scrollPage = new ScrollPage(wrapperBlock);
-            } else {
-    
-            }
-        });
-    
-    } else {
-        const wrapperBlock = document.querySelector('#fullBlock');
-        if (wrapperBlock) {
-            let scrollPage = new ScrollPage(wrapperBlock);
-        } else {
-    
-        }
-    }
+   
 
 
 
@@ -42,13 +27,9 @@ $(document).ready(function () {
     document.addEventListener('touchmove', () => {
         document.querySelector('body').classList.add('touch-action');
         document.querySelector('body').classList.remove('hover-class');
-
-
         if(hoverP === 1){
             hoverProject();
         }
-      
-
     });
 
 
@@ -82,6 +63,91 @@ $(document).ready(function () {
         sliderPeoplesActiveFirst();
     }
   
+   
+
+    //Tabs переключение
+    $('.wrapper-tabs .wrapper-link').on('click', function () {
+        var this_targ = $(this).attr('data-go');
+        openTab(this_targ);
+    });
+
+
+    const arrHamburg = document.querySelectorAll('.hamburger');
+    const thisClose = document.querySelector('.main-menu .menu-content .icon-close');
+    const footerClick = document.querySelectorAll('.open-menu-project');
+    arrHamburg.forEach((currentValue, index, arr) => {
+        currentValue.addEventListener('click', () => {
+            openMenu(currentValue);
+        })
+    });
+    if(thisClose) {
+        thisClose.addEventListener('click', () => {
+            closeMenu(thisClose);
+        });
+    }
+    if (footerClick) {
+        footerClick.forEach( (item) => {
+            item.addEventListener('click', () => {
+                openMenu(item);
+                addMenuForm();
+            });
+        });
+    }
+   
+
+
+
+
+
+   
+    $('.open-form').on('click', function () {
+        addMenuForm();
+    });
+    $('.start-project-popup .close-popup').on('click', function () {
+        closeMenuForm();
+    });
+
+
+    $('.vacancy-slider .information,.vacancy-slider .wrapper-form, .popup .wrapper').on('wheel', function (e) {
+        e.stopPropagation();
+    });
+    initSelect();
+
+    scrollBlock('sendApp', 'second-block-anchor', true)
+    scrollBlock('go-home', 'first')
+    scrollBlock('click-next-block', 'second-block-anchor');
+
+    $('.selectTabs').on('select2:select', function () {
+        var dataGo = $(this).find(":selected").data("go");
+        openTab(dataGo);
+    });
+
+
+
+});
+
+
+$(window).on('load', function () {
+    if (document.querySelector('.slick')) {
+        $('.slick').on('init', function (event, slick, direction) {
+            const wrapperBlock = document.querySelector('#fullBlock');
+            if (wrapperBlock) {
+                let scrollPage = new ScrollPage(wrapperBlock);
+            } else {
+    
+            }
+        });
+    
+    } else {
+        const wrapperBlock = document.querySelector('#fullBlock');
+        if (wrapperBlock) {
+            let scrollPage = new ScrollPage(wrapperBlock);
+        } else {
+    
+        }
+    }
+
+
     $('.slick-peoples').slick({
         dots: false,
         arrows: false,
@@ -176,23 +242,6 @@ $(document).ready(function () {
     });
 
 
-
-
-    // $('.vacancy-slider').on('init', function (event, slick, currentSlide) {
-    //     setTimeout(() => {
-    //         slick.$slides[0].classList.add('animate');
-    //     }, 0)
-
-    // });
-    // $('.vacancy-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-    //     slick.$slides[currentSlide].classList.remove('animate');
-    //     setTimeout(() => {
-    //         slick.$slides[nextSlide].classList.add('animate');
-    //     }, 600)
-    // });
-
-
-
     $('.vacancy-slider').slick({
         dots: false,
         infinite: false,
@@ -206,116 +255,6 @@ $(document).ready(function () {
         prevArrow: '<div class="slick-prev"><i class="icon-glyphter icon-previous"></i></div>'
 
     });
-
-    //Tabs переключение
-    $('.wrapper-tabs .wrapper-link').on('click', function () {
-        var this_targ = $(this).attr('data-go');
-        openTab(this_targ);
-    });
-
-
-    /*
-    $('.slider-project').slick({
-        dots: true,
-        infinite: false,
-        speed: 1100,
-        arrows: false,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        responsive: [
-            {
-                breakpoint: 1169,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-
-                }
-            },
-            {
-                breakpoint: 767,
-                settings: {
-                    centerMode: true,
-                    centerPadding: '25px',
-                    dots: false,
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-
-    $('.tabs-simple .tabs .item').on('click', function () {
-        var this_targ = $(this).attr('data-go');
-        openTab(this_targ);
-    });
-
-
-    $('#contact_form form .submit').click(function (e) {
-        e.preventDefault();
-        $(this).addClass('clicked');
-    });
-
-    scrollBlock('click-next-block', 'second-block-anchor');
-
-
-    */
-
-    const arrHamburg = document.querySelectorAll('.hamburger');
-    const thisClose = document.querySelector('.main-menu .menu-content .icon-close');
-    const footerClick = document.querySelectorAll('.open-menu-project');
-    arrHamburg.forEach((currentValue, index, arr) => {
-        currentValue.addEventListener('click', () => {
-            openMenu(currentValue);
-        })
-    });
-    if(thisClose) {
-        thisClose.addEventListener('click', () => {
-            closeMenu(thisClose);
-        });
-    }
-    if (footerClick) {
-        footerClick.forEach( (item) => {
-            item.addEventListener('click', () => {
-                openMenu(item);
-                addMenuForm();
-            });
-        });
-    }
-   
-
-
-
-
-
-   
-    $('.open-form').on('click', function () {
-        addMenuForm();
-    });
-    $('.start-project-popup .close-popup').on('click', function () {
-        closeMenuForm();
-    });
-
-
-    $('.vacancy-slider .information,.vacancy-slider .wrapper-form, .popup .wrapper').on('wheel', function (e) {
-        e.stopPropagation();
-    });
-    initSelect();
-
-    scrollBlock('sendApp', 'second-block-anchor', true)
-    scrollBlock('go-home', 'first')
-    scrollBlock('click-next-block', 'second-block-anchor');
-
-    $('.selectTabs').on('select2:select', function () {
-        var dataGo = $(this).find(":selected").data("go");
-        openTab(dataGo);
-    });
-
-
-
-});
-
-
-$(window).on('load', function () {
 
 });
 
@@ -493,16 +432,24 @@ function fancyboxIdx() {
     $('#gallery .photo').each(function () {
         arrSlide.push(this)
     });
-    $("#gallery [data-fancybox]").fancybox({
+    $('[data-fancybox="gallery"]').fancybox({
+        baseClass: 'fancybox-style-slider',
+        buttons: [
+            "close"
+        ],
         beforeShow: function (instance, slide) {
             // console.log(instance)
             console.log(slide.index)
             $("#gallery [data-fancybox]").addClass('display-none');
             arrSlide[slide.index].classList.remove('display-none');
-
-
-
         }
+    });
+    $('[data-fancybox="slideCase"]').fancybox({
+        baseClass: 'fancybox-style-lightbox',
+        wheel: false,
+        buttons: [
+            "close"
+        ]
     });
 }
 
@@ -640,7 +587,7 @@ function popup() {
 
 //preloader
 function addPreloader(obj) {
-    $(obj).append("<div class='preload'><div class='container-preload'><img src='/images/svg/oval.svg' width='50' alt=''></div></div>");
+    $(obj).append("<div class='preload'><div class='container-preload'><img src='images/svg/oval.svg' width='50' alt=''></div></div>");
 }
 function closePreloader(obj) {
     $(obj).find(".preload").detach();

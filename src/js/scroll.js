@@ -85,10 +85,10 @@ let ScrollPage = (function () {
     }
 
     ScrollPage.prototype.scrollNext = function () {
-        // console.log(`direction --- ${mainThis.direction}`)
-        // console.log(`this section height --- ${mainThis.sectionsHeight}`)
-        // console.log(`this window height --- ${mainThis.windowHeight}`)
-        // console.log(`this section offset top --- ${mainThis.currentSection.offsetTop}`)
+        console.log(`direction --- ${mainThis.direction}`)
+        console.log(`this section height --- ${mainThis.sectionsHeight}`)
+        console.log(`this window height --- ${mainThis.windowHeight}`)
+        console.log(`this section offset top --- ${mainThis.currentSection.offsetTop}`)
         // console.log(mainThis.sectionsHeight)
         // let direction = event.changedTouches[0].pageY
         if (mainThis.sectionsHeight[mainThis.currentIdx] === mainThis.windowHeight) {
